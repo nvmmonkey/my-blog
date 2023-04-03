@@ -2,7 +2,9 @@
 sidebar_position: 4
 ---
 
-# 🕸 uDAG Webchain: L1 Kadena 
+# 🕸 uDAG Layer1: Kadena
+
+*✍️ edit: April 3rd, 2023*
 
 ## Intro
 

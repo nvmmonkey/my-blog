@@ -79,7 +79,7 @@ const config = {
             position: "left",
           },
           {
-            label: "> VC Dealflow",
+            label: "VC Deal",
             to: "/docs/vc/read",
             position: "left",
           },

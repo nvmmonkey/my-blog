@@ -2,9 +2,11 @@
 sidebar_position: 1
 ---
 
-# 💹 How to Value Bitcoin Using Financial Basics
+# 💹 Bitcoin: Financial Valuation
 
 > it seems likely that fiat currencies will remain devalued or even de-anchored, but we may have an alternative from a parallel universe where BTC becomes a treasury reserve
+
+*✍️ edit: April 3rd, 2023*
 
 ## Introduction
 

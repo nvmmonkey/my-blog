@@ -2,9 +2,11 @@
 sidebar_position: 3
 ---
 
-# 🎮 GameFi 分析框架: X World Games
+# 🎮 GameFi框架: X World Games
 
 > 本文将以 X World Games 为例子，作为分析链游的框架
+
+*✍️ edit: April 3rd, 2023*
 
 ## **一、总摘要**
 
