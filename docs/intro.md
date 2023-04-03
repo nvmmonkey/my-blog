@@ -10,7 +10,7 @@ Nice to meet you, my name is Kit!
 
 I am a 🥷 Fullstack developer, 📈 Data Analyst, and 🔐 Crypto Researcher.
 
-🧰 My stacks are `NextJS`+`React`+`Javascript`+`NodeJs`+`MongoDB`+`SQL`+`Solidity`+`Python`+`CSS`+`HTML`
+🧰 My stacks are `NextJS`+`React`+`Javascript`+`NodeJS`+`MongoDB`+`SQL`+`Solidity`+`Python`+`CSS`+`HTML`
 
 🪄 Financial Wizard `Bloomberg`, `S&P Capital IQ`
 
