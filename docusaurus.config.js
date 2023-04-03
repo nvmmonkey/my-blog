@@ -23,8 +23,8 @@ const config = {
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: "zh-Hans",
-    locales: ["zh-Hans"],
+    defaultLocale: "en",
+    locales: ["en"],
   },
 
   presets: [
@@ -80,8 +80,13 @@ const config = {
           },
           {
             label: "VC Deal",
-            to: "/docs/vc/read",
+            to: "/docs/vc/20230401",
             position: "left",
+          },
+          {
+            label: "Telegram",
+            href: "https://t.me/fifibam",
+            position: "right",
           },
           {
             label: "GitHub",
@@ -110,7 +115,7 @@ const config = {
               },
               {
                 label: "VC Deal",
-                to: "/docs/vc/read",
+                to: "/docs/vc/20230401",
               },
               {
                 label: "Music",
