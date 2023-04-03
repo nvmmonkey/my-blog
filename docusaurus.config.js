@@ -69,14 +69,23 @@ const config = {
             to: "/docs/intro",
           },
           {
-            to: "/docs/blockchain/bitcoin",
             label: "Blockchain",
+            to: "/docs/blockchain/bitcoin",
             position: "left",
           },
-          { to: "/docs/coding/nextjs-mongoose", label: "Coding", position: "left" },
           {
-            href: "https://github.com/nvmmonkey",
+            label: "Coding",
+            to: "/docs/coding/nextjs-mongoose",
+            position: "left",
+          },
+          {
+            label: "> VC Dealflow",
+            to: "/docs/vc/read",
+            position: "left",
+          },
+          {
             label: "GitHub",
+            href: "https://github.com/nvmmonkey",
             position: "right",
           },
         ],
