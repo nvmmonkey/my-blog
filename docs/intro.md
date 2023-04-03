@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # 🙋🏻‍♂️ Intro
 
-> My blogs & researches mostly written in 🇨🇳 **`Chinese`** and 🇺🇸 **`English`**, use brower translator if neccessary!
+> My blogs & researches mostly written in  **`🇨🇳Chinese`** and  **`🇺🇸English`**, use brower translator if neccessary!
 
 Nice to meet you, my name is Kit!
 
