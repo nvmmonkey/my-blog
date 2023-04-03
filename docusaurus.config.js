@@ -73,7 +73,7 @@ const config = {
             label: "Blockchain",
             position: "left",
           },
-          { to: "/docs/coding/read", label: "Coding", position: "left" },
+          { to: "/docs/coding/nextjs-mongoose", label: "Coding", position: "left" },
           {
             href: "https://github.com/nvmmonkey",
             label: "GitHub",
@@ -97,7 +97,7 @@ const config = {
               },
               {
                 label: "Coding",
-                to: "/docs/coding/read",
+                to: "/docs/coding/nextjs-mongoose",
               },
               {
                 label: "VC Deal",
