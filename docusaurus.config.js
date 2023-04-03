@@ -118,7 +118,7 @@ const config = {
               },
               {
                 label: "Art",
-                to: "/docs/art/read",
+                to: "/docs/art/kongfu",
               },
               {
                 label: "AI",
