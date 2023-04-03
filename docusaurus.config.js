@@ -6,7 +6,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "blog.kitkong",
+  title: "Kit Kong",
   tagline: "Welcoome to my blog",
   url: "https://your-docusaurus-test-site.com",
   baseUrl: "/",
