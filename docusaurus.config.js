@@ -74,9 +74,8 @@ const config = {
             position: "left",
           },
           { to: "/docs/coding/read", label: "Coding", position: "left" },
-          { to: "/blog", label: "Test", position: "left" },
           {
-            href: "https://github.com/nvmmonkey/my-blog",
+            href: "https://github.com/nvmmonkey",
             label: "GitHub",
             position: "right",
           },
