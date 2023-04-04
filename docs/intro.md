@@ -8,7 +8,7 @@ sidebar_position: 1
 
 Nice to meet you, my name is Kit!
 
-I am a 🥷 Fullstack developer, 📈 Data Analyst, and 🔐 Crypto Researcher.
+I am a 🥷 Fullstack developer, 👼 Angel Investor, 📈 Data Analyst, and 🔐 Crypto Researcher.
 
 🧰 My stacks are `NextJS`+`React`+`Javascript`+`NodeJS`+`MongoDB`+`SQL`+`Solidity`+`Python`+`CSS`+`HTML`
 
