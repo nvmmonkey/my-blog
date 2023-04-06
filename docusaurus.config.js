@@ -84,6 +84,11 @@ const config = {
             position: "left",
           },
           {
+            label: "MyGPT",
+            href: "https://gpt.kitkong.xyz",
+            position: "right",
+          },
+          {
             label: "Telegram",
             href: "https://t.me/fifibam",
             position: "right",
@@ -153,6 +158,10 @@ const config = {
               {
                 label: "Linkedin",
                 href: "https://www.linkedin.com/in/wenhui-kang-800859a4/",
+              },
+              {
+                label: "MyGPT",
+                href: "https://gpt.kitkong.xyz",
               },
             ],
           },
