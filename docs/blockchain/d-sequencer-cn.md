@@ -28,7 +28,7 @@ Solana L1 需要大量 TPS 处理 voting，但单纯拿出来 SolanaVM 如 Eclip
 
 其实这些 L2/L3 在模块化世界里可以看成一堆分片数据库，用中心排序器，在伪随机+ZKSnark 或 ZKStark 里不用担心篡改或安全问题，只担心 censorship 的问题，这对于用户来说也很好解决等一层 Proof Layer1 的 Epoch 过去，直接换个分片和排序器玩就好了，在排序器还能植入 JWT Token
 
-### 应用场景(待续)：
+### 应用场景(待续)
 
 > _去中心租赁高性能排序器_
 
