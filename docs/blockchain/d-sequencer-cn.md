@@ -2,7 +2,7 @@
 sidebar_position: 7
 ---
 
-# 📈 去中心化排序器
+# 🥞 去中心化排序器
 
 > _最近看到了 Reyph 这个项目，蛮有趣的 LLVM IR+SolanaVM 做的 de-Sequencer 模块化方案。所以来结合了 Nil 和 Astria 想来聊聊这些跨 L2/L2 的状态数，类似于分片异片同步上排序器的 ZK 证明聚合的项目，简单聊聊_
 
