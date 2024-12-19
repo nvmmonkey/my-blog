@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# 🔧 Tmux Session 多个IP调用
+# 🔧 自动化 dApps 按钮
 
 > 这篇文章记录了如何在自动调用按键和前端控制的dApps ⚠️
 
