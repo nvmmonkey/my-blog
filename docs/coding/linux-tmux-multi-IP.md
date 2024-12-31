@@ -95,16 +95,95 @@ tmux new-session -s ip2 'tmux-ip2 bash'
 tmux new-session -s ip3 'tmux-ip3 bash'
 ```
 
-## 8. ⭐️ 在 tmux 里查看是否成功
+## 8. ⭐️ 推介修改Netplans永久保存
+
+```yaml
+# /etc/netplan/50-cloud-init.yaml
+network:
+    ethernets:
+        ens1:
+            dhcp4: true
+            dhcp6: true
+            match:
+                macaddress: #MAC ADDR
+            set-name: ens1
+            addresses:
+                - 0.0.0.0/24  # main address
+                - 0.0.0.0/24  # ip1
+                - 0.0.0.0/24 # ip2
+                - 0.0.0.0/24 # ip3
+    version: 2
+
+```
+
+创建Tmux Wrapper
+
+```sh
+# Main IP
+sudo tee /usr/local/bin/tmux-main <<'EOF'
+#!/bin/bash
+export CURL_INTERFACE=0.0.0.0
+"$@"
+EOF
+
+# IP1
+sudo tee /usr/local/bin/tmux-ip1 <<'EOF'
+#!/bin/bash
+export CURL_INTERFACE=0.0.0.0
+"$@"
+EOF
+
+# IP2
+sudo tee /usr/local/bin/tmux-ip2 <<'EOF'
+#!/bin/bash
+export CURL_INTERFACE=0.0.0.0
+"$@"
+EOF
+
+# IP3
+sudo tee /usr/local/bin/tmux-ip3 <<'EOF'
+#!/bin/bash
+export CURL_INTERFACE=0.0.0.0
+"$@"
+EOF
+
+# 使用sh文件可执行 | Make all scripts executable
+sudo chmod +x /usr/local/bin/tmux-*
+
+# 创建tmux窗口IP命令 | Create tmux sessions
+tmux new-session -s main 'tmux-main bash'
+tmux new-session -s ip1 'tmux-ip1 bash'
+tmux new-session -s ip2 'tmux-ip2 bash'
+tmux new-session -s ip3 'tmux-ip3 bash'
+
+```
+
+应用Netplan更改
+
+```sh
+sudo netplan try
+sudo netplan apply
+```
+
+验证IP更改及tmux窗口内验证如下⭐️⭐️步骤所示
+
+```sh
+ip addr show ens1
+```
+
+## 9. ⭐️⭐️ 在 tmux 里查看是否成功
 
 ```sh
 tmux attach-session -t 窗口名
 ```
 
-> 在 `tmux` 里查看 IP `curl --interface $CURL_INTERFACE ifconfig.me`
+> 在 `tmux` 里查看 IP 
 
+```sh
+curl --interface $CURL_INTERFACE ifconfig.me`
+```
 
-## 9. ⭐️ 使用 IP 运行服务
+## 10. ⭐️⭐️⭐️ 使用 IP 运行服务
 
 ```sh
 IP=0.0.0.0 ./run.sh
