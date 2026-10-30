@@ -119,7 +119,7 @@ export default function WestTelecom() {
         />
       </Section>
       <Section title="What's next">
-        <p>A public demo with seeded sample plans, a banner marking it as a design demo, and no live checkout.</p>
+        <p>A public demo that needs no CMS project: the real queries run against an in-memory sample dataset, every login and checkout route is switched off, and a banner says the brand is fictional.</p>
       </Section>
     </CaseStudy>
   );
