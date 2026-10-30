@@ -8,20 +8,11 @@ import { projects } from "./projects";
 // arrow keys, a swipe, or by clicking a side card. Over the focused picture a round link
 // follows the pointer and goes straight to the live site, or the case study.
 
-const IMAGES = {
-  "llm-digest": "/img/live/llm-digest-flagship",
-  "kv-cache": "/img/cards/kv-cache",
-  "solana-mev": "/img/cards/solana-mev",
-  polymarket: "/img/cards/polymarket",
-  rootdata: "/img/live/rootdata-home",
-  paymentindexer: "/img/cards/paymentindexer",
-  westtelecom: "/img/live/westtelecom-home",
-};
 
 function Card({ p, i, total, offset, onFocus }) {
   const visual = useRef(null);
   const go = useRef(null);
-  const base = useBaseUrl(IMAGES[p.slug]);
+  const base = useBaseUrl(p.image);
   const href = p.live ? p.live.href : null;
   const caseUrl = useBaseUrl(`/work/${p.slug}`);
   const focused = offset === 0;

@@ -4,6 +4,7 @@ import Link from "@docusaurus/Link";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { projects, bySlug } from "./projects";
 import { useRise } from "./motion";
+import { JsonLd, SocialImage, PERSON, SITE } from "./seo";
 import "./dusk.css";
 
 // One template for every case study: claim and instrument, the problem, one diagram,
@@ -97,6 +98,35 @@ export default function CaseStudy({ slug, role, links = [], stage, children }) {
   useRise([slug]);
   return (
     <Layout title={p.name} description={p.claim}>
+      <SocialImage src={`${p.image}-1440.webp`} />
+      <JsonLd
+        data={{
+          "@graph": [
+            {
+              "@type": "CreativeWork",
+              "@id": `${SITE}/work/${p.slug}#work`,
+              name: p.name,
+              headline: p.name,
+              description: p.claim,
+              url: `${SITE}/work/${p.slug}`,
+              image: `${SITE}${p.image}-1440.webp`,
+              dateCreated: p.year,
+              keywords: p.stack.join(", "),
+              author: { "@id": PERSON["@id"] },
+              creator: PERSON,
+              ...(p.live ? { sameAs: p.live.href } : {}),
+            },
+            {
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Home", item: SITE },
+                { "@type": "ListItem", position: 2, name: "Projects", item: `${SITE}/work` },
+                { "@type": "ListItem", position: 3, name: p.name, item: `${SITE}/work/${p.slug}` },
+              ],
+            },
+          ],
+        }}
+      />
       <main className="dusk case" style={{ "--case-needle": p.needle }}>
         <div className="spine" aria-hidden="true" />
         <header className="wrap case-hero">

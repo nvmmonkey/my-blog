@@ -4,6 +4,7 @@
 export const projects = [
   {
     slug: "llm-digest",
+    image: "/img/live/llm-digest-flagship",
     name: "LLM-Digest",
     needle: "var(--needle-digest)",
     year: "2026",
@@ -18,6 +19,7 @@ export const projects = [
   },
   {
     slug: "kv-cache",
+    image: "/img/cards/kv-cache",
     name: "KV-cache LLM serving",
     needle: "var(--needle-kv)",
     year: "2026",
@@ -31,6 +33,7 @@ export const projects = [
   },
   {
     slug: "solana-mev",
+    image: "/img/cards/solana-mev",
     name: "Solana MEV and Jito relay",
     needle: "var(--needle-relay)",
     year: "2025–2026",
@@ -44,6 +47,7 @@ export const projects = [
   },
   {
     slug: "polymarket",
+    image: "/img/cards/polymarket",
     name: "Polymarket BTC bot",
     needle: "var(--needle-poly)",
     year: "2025–2026",
@@ -57,6 +61,7 @@ export const projects = [
   },
   {
     slug: "rootdata",
+    image: "/img/live/rootdata-home",
     name: "RootData",
     needle: "var(--needle-root)",
     year: "2022–2026",
@@ -71,6 +76,7 @@ export const projects = [
   },
   {
     slug: "paymentindexer",
+    image: "/img/cards/paymentindexer",
     name: "Payment indexer",
     needle: "var(--needle-ledger)",
     year: "2026",
@@ -84,6 +90,7 @@ export const projects = [
   },
   {
     slug: "westtelecom",
+    image: "/img/live/westtelecom-home",
     name: "WestTelecom",
     needle: "var(--needle-west)",
     year: "2024, hardened 2026",

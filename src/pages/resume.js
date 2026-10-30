@@ -2,6 +2,7 @@ import React from "react";
 import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
 import { useRise } from "../components/dusk/motion";
+import { JsonLd, PERSON, SITE } from "../components/dusk/seo";
 import "../components/dusk/dusk.css";
 
 // From the owner's resumes (October 2026). Home address and phone stay off the site.
@@ -165,7 +166,11 @@ function Roles({ items }) {
 export default function Resume() {
   useRise();
   return (
-    <Layout title="Resume" description="Kit Kong, full-stack engineer in Vancouver: experience, education and skills.">
+    <Layout
+      title="Experience and resume"
+      description="Resume of Wenhui (Kit) Kang, AI systems and full-stack engineer in Vancouver: Rust, Go, Python and TypeScript; LLM pipelines and serving; trading infrastructure; RootData co-founder; MSc Applied Computer Science."
+    >
+      <JsonLd data={{ "@type": "ProfilePage", url: `${SITE}/resume`, name: "Resume of Wenhui (Kit) Kang", mainEntity: PERSON }} />
       <main className="dusk">
         <header className="wrap case-hero">
           <h1>Wenhui (Kit) Kang</h1>

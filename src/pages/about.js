@@ -2,6 +2,7 @@ import React from "react";
 import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
 import { useRise } from "../components/dusk/motion";
+import { JsonLd, PERSON, SITE } from "../components/dusk/seo";
 import "../components/dusk/dusk.css";
 
 const STRENGTHS = [
@@ -65,6 +66,7 @@ export default function About() {
   useRise();
   return (
     <Layout title="About me" description="Kit, an engineer in Vancouver who came to code from finance and crypto research, and builds AI systems and trading infrastructure.">
+      <JsonLd data={{ "@type": "ProfilePage", url: `${SITE}/about`, name: "About Wenhui (Kit) Kang", mainEntity: PERSON }} />
       <main className="dusk">
         <header className="wrap case-hero">
           <h1 className="flow-words">About me</h1>

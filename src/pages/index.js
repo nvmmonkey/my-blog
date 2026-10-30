@@ -7,6 +7,8 @@ import ProjectGallery from "../components/dusk/ProjectGallery";
 import TechOrbs from "../components/dusk/TechOrbs";
 import { STACK_GROUPS } from "../components/dusk/stackIcons";
 import { useOnPhoto, useRise } from "../components/dusk/motion";
+import { JsonLd, PERSON, SITE } from "../components/dusk/seo";
+import { projects } from "../components/dusk/projects";
 import "../components/dusk/dusk.css";
 
 const Check = () => (
@@ -51,7 +53,31 @@ export default function Home() {
   const beachSmall = useBaseUrl("/img/photo/mystic-beach-1280.webp");
 
   return (
-    <Layout title="Kit Kong" description="Full-stack engineer in Vancouver building market data pipelines, on-chain indexers and LLM report systems.">
+    <Layout
+      title="AI systems and trading infrastructure engineer, Vancouver"
+      description="Portfolio of Wenhui (Kit) Kang: LLM pipelines and agents, LLM serving, Solana and Polymarket trading infrastructure, and data products. Seven case studies with live demos."
+    >
+      <JsonLd
+        data={{
+          "@graph": [
+            {
+              "@type": "WebSite",
+              "@id": `${SITE}/#website`,
+              url: SITE,
+              name: "Kit Kong",
+              description: "Portfolio, resume and blog of Wenhui (Kit) Kang.",
+              inLanguage: "en",
+              publisher: { "@id": PERSON["@id"] },
+            },
+            PERSON,
+            {
+              "@type": "ItemList",
+              name: "Projects",
+              itemListElement: projects.map((pr, i) => ({ "@type": "ListItem", position: i + 1, name: pr.name, url: `${SITE}/work/${pr.slug}` })),
+            },
+          ],
+        }}
+      />
       <main className="dusk">
         <section className="hero" ref={hero}>
           <HeroScene src="/img/photo/fog-valley-2400.webp" width={2400} height={1568} focus={0.32} />

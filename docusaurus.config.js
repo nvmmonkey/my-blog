@@ -4,7 +4,7 @@ const { themes } = require("prism-react-renderer");
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Kit Kong",
-  tagline: "Full-stack engineer working on market data, on-chain infrastructure and LLM pipelines",
+  tagline: "AI systems, trading infrastructure and data, built in Vancouver",
   url: "https://blog.kitkong.xyz",
   baseUrl: "/",
   onBrokenLinks: "throw",
@@ -56,13 +56,31 @@ const config = {
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
+        // the Next.js sitemap.ts equivalent: every public page, no tag or pagination noise
+        sitemap: {
+          changefreq: null,
+          priority: null,
+          ignorePatterns: ["/blog/tags/**", "/blog/page/**", "/blog/archive", "/blog/authors/**", "/docs/tags/**", "/search"],
+          filename: "sitemap.xml",
+        },
       }),
     ],
   ],
 
+  plugins: ["./plugins/llms-full.js"],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      // default social card and site-wide meta, like Next.js metadata.openGraph / twitter
+      image: "img/og-card.jpg",
+      metadata: [
+        { name: "author", content: "Wenhui (Kit) Kang" },
+        { name: "keywords", content: "Kit Kong, Wenhui Kang, AI engineer, LLM, RAG, vLLM, Rust, Go, TypeScript, Next.js, Solana, MEV, Jito, Polymarket, RootData, portfolio, Vancouver" },
+        { name: "twitter:card", content: "summary_large_image" },
+        { property: "og:site_name", content: "Kit Kong" },
+        { property: "og:type", content: "website" },
+      ],
       colorMode: {
         defaultMode: "dark",
         disableSwitch: false,

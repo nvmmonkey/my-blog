@@ -1,0 +1,42 @@
+# Wenhui (Kit) Kang — Kit Kong
+
+> Engineer in Burnaby, BC (Vancouver area), building AI systems, low-latency trading infrastructure and data products. MSc Applied Computer Science (Fairleigh Dickinson University, 2026), BBA Finance (Simon Fraser University). Co-founder of RootData. Open to AI, full-stack and data engineering roles. Contact: kitstation@163.com.
+
+This file follows llmstxt.org. Every figure on the site traces to the project's own repo, logs or docs; simulations and backtests are labelled as such, and no page reports live trading returns. A longer, text-only version of the writing is at https://blog.kitkong.xyz/llms-full.txt.
+
+## Projects
+
+- [LLM-Digest](https://blog.kitkong.xyz/work/llm-digest): a self-hosted AI analyst. Every hour it reads 127 sources and runs a nine-stage LLM pipeline with typed hand-offs and a fallback model per stage; a RAG chat agent fuses SQLite FTS5/BM25 with 12 web sources by reciprocal rank fusion; 4,100+ reports. Next.js 16, React 19, Vercel AI SDK v6, SQLite. Live at https://llm.kitkong.xyz.
+- [KV-cache LLM serving](https://blog.kitkong.xyz/work/kv-cache): graduate capstone, team of four. Owned the KV-cache layer under a learning-to-rank vLLM scheduler on an RTX 3090: 4-bit KV fit 2.83× the tokens, mean time to first token 10.7 s → 1.6 s at 64 req/s, preemptions 171 → 40; block-sparse Triton decode kernels. Python, vLLM, Triton, PyTorch.
+- [Solana MEV and Jito relay](https://blog.kitkong.xyz/work/solana-mev): a Go, later Rust, gRPC bundle relay across eight Jito block-engine regions and 4,000+ egress IPs, designed for 30,000–60,000 requests a second; a shared atomic limiter and min-heap ready queue cut proxy wait from 13–28 ms to under 0.5 ms; market research on Solana arbitrage from public chain data.
+- [Polymarket BTC bot](https://blog.kitkong.xyz/work/polymarket): a Rust trading system for 5- and 15-minute BTC Up/Down markets. Hand-written Binance SBE decoder about 1.65 s ahead of the Chainlink settlement feed; Black-Scholes N(d2) fair value behind eight entry gates; a live-parity backtester over 17,549 markets, sweeps of up to 100,800 configurations, LightGBM gate models. Main author, 720 of 894 commits.
+- [RootData](https://blog.kitkong.xyz/work/rootdata): co-founder of a crypto asset database; designed and collected the database from zero; grew to 428K users and 200+ API partners; open-sourced MCP servers that expose about 20 tools to AI agents. Live at https://www.rootdata.com.
+- [Payment indexer](https://blog.kitkong.xyz/work/paymentindexer): rebuilds stablecoin card-payment volume from self-indexed chain data; 22 of 24 card programs traced, within ±0.6% of the public benchmark on EVM mainnets. TypeScript, ClickHouse, Postgres.
+- [WestTelecom](https://blog.kitkong.xyz/work/westtelecom): a bilingual telecom plan catalogue on Next.js and Sanity, shown as a fictional brand. Demo at https://westtelecom-demo.vercel.app.
+
+## About
+
+- [About me](https://blog.kitkong.xyz/about): background, strengths and working principles.
+- [Experience](https://blog.kitkong.xyz/resume): the full resume, education and skills.
+- Skills: Rust (tokio, axum), Go, Python, TypeScript, Next.js, React, SQL, gRPC; vLLM, Triton, PyTorch, LLM pipelines, RAG, MCP; Solana (Jito, Yellowstone, Jupiter), Polymarket CLOB, Uniswap V3/V4, Solidity; Proxmox homelab, Linux and Arch, Docker, Kubernetes, Ansible, Cloudflare, Vercel, AWS, GCP; Claude Code, Codex, OpenCode, Perplexity, LoRA training, ComfyUI. Languages: English, Mandarin, Cantonese.
+
+## Writing
+
+- [Where I am, autumn 2026](https://blog.kitkong.xyz/blog/autumn-2026)
+- [Designing a bundle relay for 30,000 requests a second](https://blog.kitkong.xyz/blog/jito-relay-throughput)
+- [Measure before you build](https://blog.kitkong.xyz/blog/measure-before-you-build)
+- [Nine stages, one conclusion](https://blog.kitkong.xyz/blog/nine-stages-one-conclusion)
+- [Smaller KV cache, faster first token](https://blog.kitkong.xyz/blog/kv-cache-capstone)
+- [A 27B model on one RTX 3090](https://blog.kitkong.xyz/blog/27b-on-one-3090)
+- [What a live trading system taught me about backtests](https://blog.kitkong.xyz/blog/polymarket-backtest-lessons)
+- [How I work with coding agents](https://blog.kitkong.xyz/blog/working-with-coding-agents)
+
+## Elsewhere
+
+- GitHub: https://github.com/nvmmonkey
+- LinkedIn: https://www.linkedin.com/in/wenhui-kang-800859a4/
+- Email: kitstation@163.com
+
+## Optional
+
+- [Notebook, 2023–2024](https://blog.kitkong.xyz/docs/intro): earlier notes on blockchain research, venture deals and coding.
