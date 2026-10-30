@@ -1,31 +1,13 @@
 import { useEffect } from "react";
+import { useFlow } from "./flow";
 
-// Rise-once: elements marked .rise start lowered only after this runs, so the page is
-// complete with scripting off and under reduced motion.
+// Motion for a dusk page: marks the document as motion-ok for the CSS loops (packets,
+// ripples, breathing dots), then runs the GSAP flow. Nothing is hidden before it runs.
 export function useRise(deps = []) {
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return undefined;
-    const root = document.documentElement;
-    root.classList.add("motion-ok");
-    const els = [...document.querySelectorAll(".rise:not(.is-in)")];
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const e of entries) {
-          if (!e.isIntersecting) continue;
-          e.target.classList.add("is-in");
-          io.unobserve(e.target);
-        }
-      },
-      { rootMargin: "0px 0px -8% 0px" }
-    );
-    for (const el of els) {
-      const r = el.getBoundingClientRect();
-      if (r.top < window.innerHeight) el.classList.add("is-in");
-      else io.observe(el);
-    }
-    return () => io.disconnect();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, deps);
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("motion-ok");
+  }, []);
+  useFlow(deps);
 }
 
 // The navbar sits clear on the hero photograph and turns to slate glass once it leaves it.

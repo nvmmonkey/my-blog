@@ -2,7 +2,6 @@ import React from "react";
 import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
 import { useRise } from "../components/dusk/motion";
-import { useFlow } from "../components/dusk/flow";
 import "../components/dusk/dusk.css";
 
 const STRENGTHS = [
@@ -54,7 +53,6 @@ const ROLES = [
 
 export default function About() {
   useRise();
-  useFlow();
   return (
     <Layout title="About me" description="Kit, an engineer in Vancouver who came to code from finance and crypto research, and builds AI systems and trading infrastructure.">
       <main className="dusk">

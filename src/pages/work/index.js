@@ -14,7 +14,7 @@ export default function Work() {
           <h1>Work</h1>
           <p className="case-hero__claim">
             Each write-up covers the problem, how it is built, its stack and what it measured. Three run live: LLM-Digest, RootData and the
-            WestTelecom demo. Longer posts are under <Link to="/blog">Writing</Link>, and older notes under <Link to="/docs/intro">Notes</Link>.
+            WestTelecom demo. Longer posts are on the <Link to="/blog">Blog</Link>, and my 2023–2024 research, VC and coding notes are in the <Link to="/docs/intro">Notebook</Link>.
           </p>
         </header>
         <section className="band band--flush">

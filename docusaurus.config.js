@@ -79,6 +79,7 @@ const config = {
           { label: "About Me", to: "/about", position: "left" },
           { label: "Experience", to: "/resume", position: "left" },
           { label: "Blog", to: "/blog", position: "left" },
+          { label: "Notebook", to: "/docs/intro", position: "left" },
           { label: "GitHub", href: "https://github.com/nvmmonkey", position: "right" },
         ],
       },
@@ -105,7 +106,7 @@ const config = {
             ],
           },
           {
-            title: "Notes, 2023–2024",
+            title: "Notebook, 2023–2024",
             items: [
               { label: "Blockchain", to: "/docs/blockchain/bitcoin" },
               { label: "Coding", to: "/docs/coding/nextjs-mongoose" },

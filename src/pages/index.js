@@ -6,7 +6,6 @@ import HeroScene from "../components/dusk/HeroScene";
 import ProjectGallery from "../components/dusk/ProjectGallery";
 import TechOrbs from "../components/dusk/TechOrbs";
 import { useOnPhoto, useRise } from "../components/dusk/motion";
-import { useFlow } from "../components/dusk/flow";
 import "../components/dusk/dusk.css";
 
 const Check = () => (
@@ -47,7 +46,6 @@ export default function Home() {
   const hero = useRef(null);
   useOnPhoto(hero);
   useRise();
-  useFlow();
   const beach = useBaseUrl("/img/photo/mystic-beach-2400.webp");
   const beachSmall = useBaseUrl("/img/photo/mystic-beach-1280.webp");
 
@@ -144,7 +142,7 @@ export default function Home() {
             <div className="band__head flow-up">
               <h2>Writing</h2>
               <p>
-                Longer notes on how these were built. All posts are on the <Link to="/blog">blog</Link>, and there is more about me on <Link to="/about">About me</Link>.
+                Longer notes on how these were built. All posts are on the <Link to="/blog">Blog</Link>; earlier research, VC and coding notes are in the <Link to="/docs/intro">Notebook</Link>.
               </p>
             </div>
             <ol className="ruled ruled--links">
