@@ -361,7 +361,7 @@ export default function DigestScene({ compact = false }) {
       const render = (now) => {
         raf = 0;
         if (!visible || document.hidden) return;
-        const dt = Math.min(0.05, (now - last) / 1000);
+        const dt = Math.max(0, Math.min(0.05, (now - last) / 1000));
         last = now;
         pointer.x += (pointer.tx - pointer.x) * 0.05;
         pointer.y += (pointer.ty - pointer.y) * 0.05;

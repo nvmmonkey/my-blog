@@ -19,9 +19,9 @@ Each market asks one question: will BTC be higher or lower at the end of a 15-mi
 - execution, a risk engine and reconciliation against what actually filled
 - gasless claims for settled positions
 
-I wrote about 80% of it, 720 of 894 commits. It traded live on 895 BTC markets.
+I wrote about 80% of it, 720 of 894 commits. A four-week on-chain census covered 895 of the live markets it traded.
 
-Some of the work was plain infrastructure. I ported ERC-7739 signing for deposit wallets to Rust before the official SDKs supported it. I benchmarked latency from three regions and picked Dublin, at 26 ms p50. After three production feed outages I added watchdogs, so a feed that goes quiet stops the bot instead of letting it trade on old prices.
+Some of the work was plain infrastructure. I ported ERC-7739 signing for deposit wallets to Rust, the first Rust implementation of it. I benchmarked latency from three regions and picked Dublin, at 26 ms p50. After feeds went quiet in production (a relay silent for 68 minutes, a market WebSocket dead for 9.6 hours) I added watchdogs, so a feed that goes quiet stops the bot instead of letting it trade on old prices.
 
 I mention the outages because a backtest never has them. The replayed feed never stalls. If your live system can trade on stale data and your backtest cannot, they are not running the same strategy.
 
@@ -49,11 +49,11 @@ Two habits came out of this: read the production code before changing a formula 
 
 ## Lesson 4: find losses in the wallet, not in the backtest
 
-When live and backtest results disagree, I go to the wallet's on-chain history. Wallet forensics showed that 16.9% of legs were unhedged, meaning only one side of a pair filled, and that these legs were the biggest source of losses. The backtest assumed pairs completed, so it could not show this.
+When live and backtest results disagree, I go to the wallet's on-chain history. Wallet forensics showed that 16.9% of markets (151 of 895) ended with an unhedged leg, meaning only one side of a pair filled, and that these legs were the biggest source of losses. The backtest assumed pairs completed, so it could not show this.
 
 ## Lesson 5: big sweeps need a fixed bar
 
-At one point I ran parameter sweeps over 108K configurations. With that many tries, some configuration always looks great by chance. A few rules kept me honest:
+At one point I ran parameter sweeps over 100,800 configurations. With that many tries, some configuration always looks great by chance. A few rules kept me honest:
 
 - Write down what counts as good enough before tuning: drawdown, longest losing streak, out-of-sample win rate, worst single day. When a version meets the bar, stop tuning it.
 - Split data into training and test periods, and use the test period once. If you tune on the test results, the test period has become training data.
@@ -65,7 +65,7 @@ There is also a point where the parameters are exhausted. When seven families an
 
 ## Lesson 6: let agents run the loop, and pre-register it
 
-Later I let coding agents run research loops: propose a filter, run it, write down the result. One loop trained walk-forward XGBoost filters over 397 markets, and in backtest those filters moved ROI from 77% to 104%. That is a backtest figure, and backtest ROI is not live return.
+Later I let coding agents run research loops: propose a filter, run it, write down the result. One loop trained walk-forward gradient-boosted gate models; the 15-minute tail model reached 0.967 AUC out of sample and then spent a week in shadow before promotion. Another taught me about leakage: a gate that was right 99.8% of the time still lost money until the label was made revenue-aware.
 
 What made the agent loop useful was not the model. It was writing the plan and the pass/fail criteria in a file before looking at any results, with rules for stopping early. With that in place, an agent can say "this idea failed" and stop. Without it, the agent keeps adjusting things until something passes.
 

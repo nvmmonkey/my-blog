@@ -107,6 +107,8 @@ const SKILLS = [
   ["Web", "Next.js (App Router, RSC), React 19, Tailwind, shadcn/Radix, next-intl, Node.js, Sanity, NextAuth"],
   ["ML systems", "vLLM, Triton, PyTorch, KV-cache quantization, llama.cpp, Ollama, MCP, Vercel AI SDK"],
   ["Chains", "Solana (Jito, Yellowstone, Jupiter), Polymarket CLOB, Uniswap V3/V4, Solidity and Foundry"],
+  ["AI tools", "Claude Code, Codex, OpenCode, Perplexity; LoRA training, ComfyUI, Hugging Face, Ollama"],
+  ["Infrastructure", "Proxmox homelab, Synology NAS, KVM/QEMU, Linux and Arch Linux, Docker, Kubernetes, Ansible, Cloudflare, Vercel, AWS, GCP"],
   ["Finance", "Bloomberg, S&P Capital IQ, Dune SQL, DCF and LBO modelling"],
   ["Spoken", "English, Mandarin and Cantonese"],
 ];

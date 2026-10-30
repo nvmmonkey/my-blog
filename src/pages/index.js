@@ -5,6 +5,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 import HeroScene from "../components/dusk/HeroScene";
 import ProjectGallery from "../components/dusk/ProjectGallery";
 import TechOrbs from "../components/dusk/TechOrbs";
+import { STACK_GROUPS } from "../components/dusk/stackIcons";
 import { useOnPhoto, useRise } from "../components/dusk/motion";
 import "../components/dusk/dusk.css";
 
@@ -109,9 +110,17 @@ export default function Home() {
           <div className="wrap">
             <div className="band__head flow-up">
               <h2>Stack</h2>
-              <p>What the projects below are written in. Grab a ball and spin it.</p>
+              <p>
+                What the projects above are written in, the AI tools I build with every day, and the infrastructure I run, from a Proxmox
+                homelab to servers in several regions. Grab a ball and spin it.
+              </p>
             </div>
-            <TechOrbs />
+            {STACK_GROUPS.map((g) => (
+              <div key={g.title} className="stack-group">
+                <h3>{g.title}</h3>
+                <TechOrbs items={g.items} />
+              </div>
+            ))}
           </div>
         </section>
 

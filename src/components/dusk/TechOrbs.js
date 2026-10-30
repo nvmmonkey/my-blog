@@ -13,17 +13,27 @@ function logoTexture(THREE, item) {
   const c = document.createElement("canvas");
   c.width = c.height = size;
   const g = c.getContext("2d");
-  g.translate(size * 0.18, size * 0.18);
-  g.scale((size * 0.64) / 24, (size * 0.64) / 24);
   g.fillStyle = item.color;
-  g.fill(new Path2D(item.path));
+  if (item.path) {
+    g.translate(size * 0.18, size * 0.18);
+    g.scale((size * 0.64) / 24, (size * 0.64) / 24);
+    g.fill(new Path2D(item.path));
+  } else {
+    // no published mark: set the name as a word mark
+    const words = item.text.split(" ");
+    const fs = words.some((w) => w.length > 6) ? 46 : 58;
+    g.font = `600 ${fs}px "Wix Madefor Display", system-ui, sans-serif`;
+    g.textAlign = "center";
+    g.textBaseline = "middle";
+    words.forEach((w, i) => g.fillText(w, size / 2, size / 2 + (i - (words.length - 1) / 2) * fs * 1.05));
+  }
   const tex = new THREE.CanvasTexture(c);
   tex.colorSpace = THREE.SRGBColorSpace;
   tex.anisotropy = 4;
   return tex;
 }
 
-export default function TechOrbs() {
+export default function TechOrbs({ items = STACK }) {
   const wrap = useRef(null);
   const canvasRef = useRef(null);
   const labels = useRef([]);
@@ -44,7 +54,7 @@ export default function TechOrbs() {
       }
       renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
       const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(32, 1, 0.1, 100);
+      const camera = new THREE.PerspectiveCamera(18, 1, 0.1, 200);
       scene.add(new THREE.HemisphereLight(0xb9c0ff, 0x1b1f2a, 1.1));
       const key = new THREE.DirectionalLight(0xffd2b0, 1.6);
       key.position.set(3, 4, 5);
@@ -55,7 +65,7 @@ export default function TechOrbs() {
 
       const geo = new THREE.IcosahedronGeometry(0.46, 1);
       const edges = new THREE.EdgesGeometry(geo, 1);
-      const orbs = STACK.map((item, i) => {
+      const orbs = items.map((item, i) => {
         const group = new THREE.Group();
         const shellMat = new THREE.MeshStandardMaterial({
           color: new THREE.Color(item.color).lerp(new THREE.Color(0x2a3048), 0.55),
@@ -84,32 +94,39 @@ export default function TechOrbs() {
       let narrow = false;
       let w = 1;
       let h = 1;
+      // a grid: up to nine across on wide screens (two rows past that), three on a phone
+      let cols = 1;
+      let rows = 1;
+      const SX = 1.3;
+      const SY = 1.5;
       const layout = () => {
-        const cols = narrow ? 3 : orbs.length;
+        const n = orbs.length;
+        cols = narrow ? 3 : n <= 9 ? n : Math.ceil(n / 2);
+        rows = Math.ceil(n / cols);
         orbs.forEach((o, i) => {
-          if (narrow) {
-            const col = i % cols;
-            const row = Math.floor(i / cols);
-            o.base.set((col - 1) * 1.3, (1 - row) * 1.5, 0);
-          } else {
-            const x = (i - (orbs.length - 1) / 2) * 1.12;
-            o.base.set(x, Math.sin(i * 1.3) * 0.28, Math.cos(i * 0.9) * 0.18);
-          }
+          const row = Math.floor(i / cols);
+          const inRow = Math.min(cols, n - row * cols);
+          const col = i % cols;
+          const x = (col - (inRow - 1) / 2) * SX;
+          const y = ((rows - 1) / 2 - row) * SY + (narrow ? 0 : Math.sin(i * 1.3) * 0.18);
+          o.base.set(x, y, 0);
         });
       };
       const resize = () => {
         const r = wrap.current.getBoundingClientRect();
         w = r.width;
         narrow = w < rem(41);
-        h = narrow ? Math.min(rem(37.5), w * 1.4) : Math.max(rem(16), Math.min(rem(22.5), w * 0.3));
+        layout();
+        // keep a ball near 5 rem across however wide the column gets
+        const halfW = Math.max(((cols - 1) / 2) * SX + 0.9, w / rem(10.5));
+        const halfH = ((rows - 1) / 2) * SY + 1.0;
+        h = Math.max(rem(12), Math.min(rem(40), (w * halfH) / halfW));
         renderer.setSize(w, h, false);
         canvasRef.current.style.height = `${h}px`;
         camera.aspect = w / h;
         camera.updateProjectionMatrix();
-        layout();
-        const halfW = narrow ? 2.1 : ((orbs.length - 1) / 2) * 1.12 + 0.95;
-        const tan = Math.tan((16 * Math.PI) / 180);
-        const z = Math.max(halfW / (tan * camera.aspect), (narrow ? 2.3 : 1.0) / tan);
+        const tan = Math.tan((9 * Math.PI) / 180);
+        const z = Math.max(halfW / (tan * camera.aspect), halfH / tan);
         camera.position.set(0, 0.2, z);
         camera.lookAt(0, 0, 0);
       };
@@ -185,7 +202,7 @@ export default function TechOrbs() {
       const frame = (now) => {
         raf = 0;
         if (!visible || document.hidden) return;
-        const dt = Math.min(0.05, (now - last) / 1000);
+        const dt = Math.max(0, Math.min(0.05, (now - last) / 1000));
         last = now;
         const t = now / 1000;
         orbs.forEach((o) => {
@@ -255,8 +272,8 @@ export default function TechOrbs() {
     <div className="tech-orbs" ref={wrap}>
       {webgl ? (
         <>
-          <canvas ref={canvasRef} className="tech-orbs__canvas" role="img" aria-label={`Spinning balls with the logos of ${STACK.map((s) => s.name).join(", ")}`} />
-          {STACK.map((s, i) => (
+          <canvas ref={canvasRef} className="tech-orbs__canvas" role="img" aria-label={`Spinning balls with the logos of ${items.map((s) => s.name).join(", ")}`} />
+          {items.map((s, i) => (
             <span key={s.name} className="tech-orbs__label" ref={(el) => (labels.current[i] = el)}>
               {s.name}
             </span>
@@ -264,7 +281,7 @@ export default function TechOrbs() {
         </>
       ) : (
         <ul className="stack">
-          {STACK.map((s) => (
+          {items.map((s) => (
             <li key={s.name}>{s.name}</li>
           ))}
         </ul>

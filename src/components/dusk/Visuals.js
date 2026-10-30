@@ -163,7 +163,24 @@ export function RootThumb() {
   );
 }
 
+export function PolyThumb() {
+  // a price line crossing the strike, and the moment the bot acts
+  const pts = [8, 22, 18, 30, 26, 44, 40, 62, 70, 66, 88, 96, 92, 110, 124, 118, 132, 150];
+  const d = pts.map((y, i) => `${i ? "L" : "M"}${24 + i * 16} ${190 - y}`).join(" ");
+  return (
+    <div className="instrument instrument--poly" aria-hidden="true">
+      <svg viewBox="0 0 320 240">
+        <line x1="20" x2="300" y1="120" y2="120" className="instrument__rule" strokeDasharray="4 4" />
+        <path d={d} className="poly__line" />
+        <line x1="152" x2="152" y1="30" y2="210" className="poly__beam" />
+        <circle cx="152" cy="120" r="5" className="poly__cross" />
+      </svg>
+    </div>
+  );
+}
+
 export function Thumb({ slug }) {
+  if (slug === "polymarket") return <PolyThumb />;
   if (slug === "rootdata") return <RootThumb />;
   if (slug === "llm-digest") return <RhythmStrip compact />;
   if (slug === "kv-cache") return <KvThumb />;

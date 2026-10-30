@@ -41,6 +41,7 @@ html[data-theme] {
   --needle-ledger: oklch(80% 0.07 160);
   --needle-kv: oklch(80% 0.09 305);
   --needle-root: oklch(80% 0.13 60);
+  --needle-poly: oklch(78% 0.12 350);
 
   --glass: oklch(22% 0.018 268 / 0.58);
   --glass-blur: 22px;
@@ -158,12 +159,13 @@ html[data-theme="light"] {
   --color-focus: oklch(50% 0.14 274);
   --color-accent-2: oklch(52% 0.13 52);
 
-  --needle-digest: oklch(56% 0.16 122);
-  --needle-west: oklch(58% 0.15 45);
-  --needle-relay: oklch(52% 0.09 215);
-  --needle-ledger: oklch(52% 0.09 160);
-  --needle-kv: oklch(52% 0.13 305);
-  --needle-root: oklch(58% 0.14 60);
+  --needle-digest: oklch(50% 0.15 122);
+  --needle-west: oklch(52% 0.15 45);
+  --needle-relay: oklch(48% 0.09 215);
+  --needle-ledger: oklch(48% 0.09 160);
+  --needle-kv: oklch(48% 0.13 305);
+  --needle-root: oklch(52% 0.14 60);
+  --needle-poly: oklch(50% 0.15 350);
 
   --glass: oklch(99% 0.004 75 / 0.66);
   --glass-hi: inset 0 1px 0 oklch(100% 0 0 / 0.8), inset 0 0 0 1px oklch(21% 0.016 268 / 0.08);
@@ -289,7 +291,13 @@ html[data-theme] {
 }
 
 .navbar-sidebar {
-  background: color-mix(in oklab, var(--color-paper) 72%, transparent);
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 100vh;
+  height: 100dvh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: color-mix(in oklab, var(--color-paper) 86%, transparent);
   -webkit-backdrop-filter: blur(28px) saturate(1.4);
   backdrop-filter: blur(28px) saturate(1.4);
   box-shadow: none;
@@ -315,6 +323,16 @@ html[data-theme] {
 
 .navbar-sidebar__item {
   padding: var(--space-lg) var(--gutter);
+}
+
+.navbar-sidebar__items {
+  height: auto;
+  min-height: calc(100dvh - var(--ifm-navbar-height));
+}
+
+html.menu-open,
+html.menu-open body {
+  overscroll-behavior: none;
 }
 
 .navbar-sidebar .menu__list-item + .menu__list-item {
@@ -513,4 +531,11 @@ html[data-theme="light"] .cursor-glow {
 .navbar__inner {
   max-width: var(--container-wide);
   margin-inline: auto;
+}
+
+/* inline code in the notebook keeps its words whole */
+.markdown :not(pre) > code {
+  word-break: normal;
+  overflow-wrap: normal;
+  white-space: nowrap;
 }

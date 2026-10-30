@@ -395,7 +395,7 @@ export default function RelayGlobe() {
       const render = (now) => {
         raf = 0;
         if (!visible || document.hidden) return;
-        const dt = Math.min(0.05, (now - last) / 1000);
+        const dt = Math.max(0, Math.min(0.05, (now - last) / 1000));
         last = now;
         if (!drag) world.rotation.y += spin * dt;
         hub.rotation.x += dt * 0.6;

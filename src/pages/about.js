@@ -20,6 +20,16 @@ const STRENGTHS = [
     body: "Co-founder of a crypto data platform that reached 428K users, with a database I designed and collected from zero, and four years reading 200+ seed deals a year. I know what the data is for before I write the pipeline.",
     to: "/work/rootdata",
   },
+  {
+    head: "Infrastructure",
+    body: "A Proxmox homelab with a Synology NAS, Linux and Arch on bare metal and in VMs, Docker and Kubernetes, machines configured with Ansible, and servers and address ranges across regions for the Solana relay. Production apps run on Vercel and Cloudflare.",
+    to: "/work/solana-mev",
+  },
+  {
+    head: "Building with AI",
+    body: "Claude Code, Codex, OpenCode and Perplexity every day, with notes and checks that keep agents honest on large codebases. LoRA training and ComfyUI pipelines on a local RTX 3090.",
+    to: "/blog/working-with-coding-agents",
+  },
 ];
 
 const PRINCIPLES = [
@@ -88,7 +98,7 @@ export default function About() {
             <div className="band__head flow-up">
               <h2>What I'm good at</h2>
             </div>
-            <ul className="ai-grid ai-grid--three">
+            <ul className="ai-grid ai-grid--auto">
               {STRENGTHS.map((s, i) => (
                 <li key={s.head} className="rise" style={{ "--i": i }}>
                   <h3>{s.head}</h3>

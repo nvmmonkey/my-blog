@@ -228,7 +228,7 @@ export default function KvScene() {
       const render = (now) => {
         raf = 0;
         if (!visible || document.hidden) return;
-        const dt = Math.min(0.05, (now - last) / 1000);
+        const dt = Math.max(0, Math.min(0.05, (now - last) / 1000));
         last = now;
         pointer.x += (pointer.tx - pointer.x) * 0.05;
         rig.rotation.y = -0.18 + pointer.x * 0.25 + Math.sin(now / 5000) * 0.04;

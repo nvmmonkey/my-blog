@@ -43,6 +43,19 @@ export const projects = [
     stack: ["Go", "gRPC", "Rust (tokio, axum)", "Solana Go SDK", "Jito", "Yellowstone gRPC", "Python"],
   },
   {
+    slug: "polymarket",
+    name: "Polymarket BTC bot",
+    needle: "var(--needle-poly)",
+    year: "2025–2026",
+    claim: "A Rust trading system for Polymarket's 5- and 15-minute BTC Up/Down markets: it reads Binance over SBE ahead of the market's own feeds, prices each market as a binary option, and trades only when the book sits far enough from fair to pay for the fee and the hedge.",
+    metrics: [
+      ["720 / 894", "commits mine"],
+      ["~1.65 s", "ahead of the settlement feed"],
+      ["17,549", "markets in the backtest corpus"],
+    ],
+    stack: ["Rust (tokio)", "Binance SBE", "Polymarket CLOB", "Gnosis Safe, CTF", "Python", "LightGBM", "Parquet"],
+  },
+  {
     slug: "rootdata",
     name: "RootData",
     needle: "var(--needle-root)",
