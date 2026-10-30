@@ -1,31 +1,36 @@
 // @ts-check
-// Note: type annotations allow type checking and IDEs autocompletion
-
-const lightCodeTheme = require("prism-react-renderer/themes/github");
-const darkCodeTheme = require("prism-react-renderer/themes/dracula");
+const { themes } = require("prism-react-renderer");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Kit Kong",
-  tagline: "Welcoome to my blog",
-  url: "https://your-docusaurus-test-site.com",
+  tagline: "Full-stack engineer working on market data, on-chain infrastructure and LLM pipelines",
+  url: "https://blog.kitkong.xyz",
   baseUrl: "/",
-  onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "warn",
-  favicon: "img/favicon.ico",
+  onBrokenLinks: "warn",
+  markdown: {
+    format: "detect",
+    hooks: { onBrokenMarkdownLinks: "warn" },
+  },
+  favicon: "img/favicon.svg",
+  organizationName: "nvmmonkey",
+  projectName: "my-blog",
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: "nvmmonkey", // Usually your GitHub org/user name.
-  projectName: "my-blog", // Usually your repo name.
-
-  // Even if you don't use internalization, you can use this field to set useful
-  // metadata like html lang. For example, if your site is Chinese, you may want
-  // to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: "en",
     locales: ["en"],
   },
+
+  stylesheets: [
+    {
+      href: "https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400;500;600&family=Wix+Madefor+Text:wght@400;500;600&display=swap",
+      type: "text/css",
+    },
+  ],
+  headTags: [
+    { tagName: "link", attributes: { rel: "preconnect", href: "https://fonts.googleapis.com" } },
+    { tagName: "link", attributes: { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "anonymous" } },
+  ],
 
   presets: [
     [
@@ -34,18 +39,8 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          // editUrl:
-          //   "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
         },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          // editUrl:
-          //   "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
-        },
+        blog: false,
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
@@ -56,124 +51,59 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      colorMode: {
+        defaultMode: "dark",
+        respectPrefersColorScheme: false,
+      },
       navbar: {
-        title: "blog.kitkong",
+        title: "Kit Kong",
         logo: {
-          alt: "Kitkong's Blog Logo",
-          src: "img/logo.svg",
+          alt: "Kit Kong",
+          src: "img/mark.svg",
         },
         items: [
-          {
-            label: "About",
-            position: "left",
-            to: "/docs/intro",
-          },
-          {
-            label: "Blockchain",
-            to: "/docs/blockchain/bitcoin",
-            position: "left",
-          },
-          {
-            label: "Coding",
-            to: "/docs/coding/nextjs-mongoose",
-            position: "left",
-          },
-          {
-            label: "VC Deal",
-            to: "/docs/vc/20230401",
-            position: "left",
-          },
-          {
-            label: "MyGPT",
-            href: "https://gpt.kitkong.xyz",
-            position: "right",
-          },
-          {
-            label: "Telegram",
-            href: "https://t.me/fifibam",
-            position: "right",
-          },
-          {
-            label: "GitHub",
-            href: "https://github.com/nvmmonkey",
-            position: "right",
-          },
+          { label: "Work", to: "/work", position: "left" },
+          { label: "Resume", to: "/resume", position: "left" },
+          { label: "Notes", to: "/docs/intro", position: "left" },
+          { label: "GitHub", href: "https://github.com/nvmmonkey", position: "right" },
         ],
       },
       footer: {
         style: "dark",
         links: [
           {
-            title: "Docs",
+            title: "Work",
             items: [
-              {
-                label: "About",
-                to: "/docs/intro",
-              },
-              {
-                label: "Blockchain",
-                to: "/docs/blockchain/bitcoin",
-              },
-              {
-                label: "Coding",
-                to: "/docs/coding/nextjs-mongoose",
-              },
-              {
-                label: "VC Deal",
-                to: "/docs/vc/20230401",
-              },
-              {
-                label: "Music",
-                to: "/docs/music/read",
-              },
-              {
-                label: "Art",
-                to: "/docs/art/kongfu",
-              },
-              {
-                label: "AI",
-                to: "/docs/ai/read",
-              },
-              {
-                label: "Mechanic",
-                to: "/docs/car-mod/read",
-              },
+              { label: "LLM-Digest", to: "/work/llm-digest" },
+              { label: "Solana MEV relay", to: "/work/solana-mev" },
+              { label: "WestTelecom", to: "/work/westtelecom" },
+              { label: "Payment indexer", to: "/work/paymentindexer" },
             ],
           },
           {
-            title: "Links",
+            title: "Notes",
             items: [
-              {
-                label: "Github",
-                href: "https://github.com/nvmmonkey",
-              },
-              {
-                label: "Telegram",
-                href: "https://t.me/fifibam",
-              },
-              {
-                label: "Twitter",
-                href: "https://twitter.com/bamboobee5",
-              },
-              {
-                label: "Linkedin",
-                href: "https://www.linkedin.com/in/wenhui-kang-800859a4/",
-              },
-              {
-                label: "MyGPT",
-                href: "https://gpt.kitkong.xyz",
-              },
+              { label: "Blockchain", to: "/docs/blockchain/bitcoin" },
+              { label: "Coding", to: "/docs/coding/nextjs-mongoose" },
+              { label: "VC deals", to: "/docs/vc/20230401" },
+              { label: "AI", to: "/docs/ai/read" },
             ],
           },
           {
-            title: "❤️ Thank you for supporting",
+            title: "Elsewhere",
+            items: [
+              { label: "GitHub", href: "https://github.com/nvmmonkey" },
+              { label: "LinkedIn", href: "https://www.linkedin.com/in/wenhui-kang-800859a4/" },
+              { label: "Telegram", href: "https://t.me/fifibam" },
+              { label: "Twitter", href: "https://twitter.com/bamboobee5" },
+            ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Kitkong's Blog, Inc. Built with Docusaurus.`,
+        copyright: `© ${new Date().getFullYear()} Kit Kong`,
       },
       prism: {
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
+        theme: themes.github,
+        darkTheme: themes.oneDark,
       },
     }),
 };
