@@ -40,7 +40,19 @@ const config = {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
         },
-        blog: false,
+        blog: {
+          routeBasePath: "blog",
+          blogTitle: "Writing",
+          blogDescription: "Notes from building AI systems, trading infrastructure and data pipelines.",
+          blogSidebarTitle: "All posts",
+          blogSidebarCount: "ALL",
+          showReadingTime: true,
+          postsPerPage: 10,
+          onInlineAuthors: "throw",
+          onInlineTags: "ignore",
+          onUntruncatedBlogPosts: "warn",
+          feedOptions: { type: ["rss", "atom"], title: "Kit Kong: writing", copyright: `© ${new Date().getFullYear()} Kit Kong` },
+        },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
@@ -64,6 +76,7 @@ const config = {
         },
         items: [
           { label: "Work", to: "/work", position: "left" },
+          { label: "Writing", to: "/blog", position: "left" },
           { label: "Resume", to: "/resume", position: "left" },
           { label: "Notes", to: "/docs/intro", position: "left" },
           { label: "GitHub", href: "https://github.com/nvmmonkey", position: "right" },
@@ -76,13 +89,22 @@ const config = {
             title: "Work",
             items: [
               { label: "LLM-Digest", to: "/work/llm-digest" },
-              { label: "Solana MEV research", to: "/work/solana-mev" },
-              { label: "WestTelecom", to: "/work/westtelecom" },
+              { label: "KV-cache LLM serving", to: "/work/kv-cache" },
+              { label: "Solana MEV and Jito relay", to: "/work/solana-mev" },
               { label: "Payment indexer", to: "/work/paymentindexer" },
+              { label: "WestTelecom", to: "/work/westtelecom" },
             ],
           },
           {
-            title: "Notes",
+            title: "Writing",
+            items: [
+              { label: "All posts", to: "/blog" },
+              { label: "Where I am, autumn 2026", to: "/blog/autumn-2026" },
+              { label: "RSS", href: "https://blog.kitkong.xyz/blog/rss.xml" },
+            ],
+          },
+          {
+            title: "Notes, 2023–2024",
             items: [
               { label: "Blockchain", to: "/docs/blockchain/bitcoin" },
               { label: "Coding", to: "/docs/coding/nextjs-mongoose" },

@@ -1,5 +1,5 @@
-// Every figure here comes from the project's own repo, logs or docs. Keep them rounded
-// down ("4,100+"), and never add one that cannot be traced back.
+// Every figure here comes from the project's own repo, logs, docs or the resume. Keep them
+// rounded down ("4,100+"), and never add one that cannot be traced back.
 
 export const projects = [
   {
@@ -7,26 +7,40 @@ export const projects = [
     name: "LLM-Digest",
     needle: "var(--needle-digest)",
     year: "2026",
-    claim: "Writes one page of market conclusions every hour from 127 sources, and every number on it traces back to a post.",
+    claim: "An AI analyst I run myself: every hour it reads 127 sources, runs a nine-stage LLM pipeline with a fallback model behind every stage, and writes one page of market conclusions that trace back to their posts.",
     metrics: [
-      ["127", "sources"],
-      ["4,100+", "reports"],
-      ["9", "pipeline stages"],
+      ["9", "LLM stages a run"],
+      ["127", "sources an hour"],
+      ["4,100+", "reports written"],
     ],
-    stack: "Next.js 16, React 19, SQLite, Vercel AI SDK, WebGL",
+    stack: ["Next.js 16", "React 19", "TypeScript", "Vercel AI SDK v6", "SQLite FTS5", "Drizzle", "NVIDIA embeddings", "Cloudflare Tunnel"],
+    live: { href: "https://llm.kitkong.xyz", text: "llm.kitkong.xyz" },
+  },
+  {
+    slug: "kv-cache",
+    name: "KV-cache LLM serving",
+    needle: "var(--needle-kv)",
+    year: "2026",
+    claim: "Graduate capstone on serving latency: I owned the KV-cache layer under a learned vLLM scheduler, where 4-bit KV fit 2.83 times the tokens and cut time to first token 6.8 times under load.",
+    metrics: [
+      ["2.83×", "token capacity"],
+      ["6.8×", "faster first token"],
+      ["−47%", "P99 time per token"],
+    ],
+    stack: ["Python", "vLLM", "Triton", "PyTorch", "Llama-3.1-8B", "RTX 3090"],
   },
   {
     slug: "solana-mev",
-    name: "Solana MEV research",
+    name: "Solana MEV and Jito relay",
     needle: "var(--needle-relay)",
     year: "2025–2026",
-    claim: "Measured where Solana arbitrage revenue actually lands before building for it, and wrote the transport that carries bundles to regional block engines.",
+    claim: "A bundle relay built for 30,000 to 60,000 requests a second across eight block-engine regions, and the market research that decided what to build on top of it.",
     metrics: [
-      ["5", "bots reverse-engineered"],
-      ["86%", "of sampled gross is 2-hop"],
-      ["9", "regional endpoints"],
+      ["4,000+", "egress IPs"],
+      ["8", "block-engine regions"],
+      ["<0.5 ms", "proxy wait, from 13–28"],
     ],
-    stack: "Python (stdlib), Go, gRPC, Solana RPC",
+    stack: ["Go", "gRPC", "Rust (tokio, axum)", "Solana Go SDK", "Jito", "Yellowstone gRPC", "Python"],
   },
   {
     slug: "paymentindexer",
@@ -39,20 +53,21 @@ export const projects = [
       ["413", "registered addresses"],
       ["±0.6%", "on EVM mainnets"],
     ],
-    stack: "TypeScript, ClickHouse, Postgres, EVM and Solana adapters",
+    stack: ["TypeScript", "ClickHouse", "Postgres", "EVM adapters", "Solana adapters"],
   },
   {
     slug: "westtelecom",
     name: "WestTelecom",
     needle: "var(--needle-west)",
     year: "2024, hardened 2026",
-    claim: "A bilingual plan catalogue for a telecom reseller: staff edit plans in an embedded studio and the site updates without a redeploy.",
+    claim: "A bilingual plan catalogue for a telecom reseller: staff edit plans in an embedded studio and the site updates without a redeploy. The live demo runs on fictional data.",
     metrics: [
       ["5", "product lines"],
       ["2", "languages"],
       ["9", "content schemas"],
     ],
-    stack: "Next.js App Router, Sanity v3, next-intl, Tailwind",
+    stack: ["Next.js App Router", "TypeScript", "Sanity v3", "GROQ", "next-intl", "Tailwind", "Vercel"],
+    live: { href: "https://westtelecom-demo.vercel.app", text: "westtelecom-demo.vercel.app" },
   },
 ];
 

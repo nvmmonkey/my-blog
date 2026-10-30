@@ -63,7 +63,9 @@ const PROJECTS = [
     what: "LLM-Digest, self-hosted market intelligence",
     org: "Next.js 16, React 19, TypeScript, AI SDK v6, SQLite FTS5",
     points: [
-      "Tool-calling RAG agent fusing SQLite FTS5/BM25 with 12 web search sources by reciprocal rank fusion, with query rewriting and citation checks.",
+      "Nine-stage narrative LLM pipeline with Zod-validated JSON hand-offs, jsonrepair and retry, byte-level stall watchdogs and per-task model fallback; 4,100+ reports from 127 sources.",
+      "Tool-calling RAG agent (6 tools, phased 3-step loop) fusing SQLite FTS5/BM25 with 12 web search sources by reciprocal rank fusion, with query rewriting and citation checks.",
+      "Semantic news dedup with NVIDIA embeddings, SimHash and cosine-centroid clustering over in-memory Float32 pools, chosen over a vector database after benchmarking Qdrant and Postgres.",
       "One client over 7 LLM providers: encrypted key vault, per-provider pacing, daily budgets, tool-call repair and per-run cost tracking.",
       "Self-hosted with systemd and Cloudflare Tunnel; staged-build deploys cut downtime from about 2.5 minutes to about 3 seconds.",
     ],
@@ -76,6 +78,12 @@ const PROJECTS = [
       "Owned the KV-cache layer under a learning-to-rank vLLM scheduler: 4-bit KV gave 2.83× token capacity and cut mean time to first token 6.8× at 64 requests a second.",
       "Wrote block-sparse attention Triton decode kernels (1.33–1.75× standalone) and patched vLLM's decode path: −22% time per output token, −47% P99.",
     ],
+  },
+  {
+    when: "2023 – now",
+    what: "Local LLM inference lab",
+    org: "Ollama, llama.cpp (CUDA), GGUF K-quants, ComfyUI, Hugging Face",
+    points: ["Run and tune quantized 27B LLMs and vision models on one 24 GB RTX 3090; trained and published an OPT-125M ranker and dataset on Hugging Face."],
   },
 ];
 

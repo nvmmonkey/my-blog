@@ -81,7 +81,7 @@ export function CoverageMock() {
 }
 
 export function RelayThumb() {
-  const regions = [30, 62, 94, 126, 158, 190, 222, 254, 286];
+  const regions = [38, 72, 106, 140, 174, 208, 242, 276];
   return (
     <div className="instrument instrument--relay" aria-hidden="true">
       <svg viewBox="0 0 320 240">
@@ -121,8 +121,26 @@ export function LedgerThumb() {
   );
 }
 
+export function KvThumb() {
+  // pages of KV memory: the first rows fill, one row is preempted and refills
+  const cells = Array.from({ length: 60 }, (_, i) => i);
+  return (
+    <div className="instrument instrument--kv" aria-hidden="true">
+      <svg viewBox="0 0 320 240">
+        {cells.map((i) => {
+          const x = 40 + (i % 12) * 20;
+          const y = 50 + Math.floor(i / 12) * 28;
+          const row = Math.floor(i / 12);
+          return <rect key={i} x={x} y={y} width="15" height="20" rx="3" className={`kv__cell kv__cell--${row}`} style={{ animationDelay: `${(i % 12) * 90 + row * 400}ms` }} />;
+        })}
+      </svg>
+    </div>
+  );
+}
+
 export function Thumb({ slug }) {
   if (slug === "llm-digest") return <RhythmStrip compact />;
+  if (slug === "kv-cache") return <KvThumb />;
   if (slug === "solana-mev") return <RelayThumb />;
   if (slug === "westtelecom") return <CoverageMock />;
   return <LedgerThumb />;

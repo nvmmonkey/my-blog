@@ -1,5 +1,5 @@
 import React from "react";
-import CaseStudy, { Section, Highlights } from "../../components/dusk/CaseStudy";
+import CaseStudy, { Section, Highlights, StackGroups, LiveDemo } from "../../components/dusk/CaseStudy";
 import { CoverageMock } from "../../components/dusk/Visuals";
 
 function ContentFlow() {
@@ -118,8 +118,20 @@ export default function WestTelecom() {
           ]}
         />
       </Section>
-      <Section title="What's next">
-        <p>A public demo that needs no CMS project: the real queries run against an in-memory sample dataset, every login and checkout route is switched off, and a banner says the brand is fictional.</p>
+      <Section title="See it running" figure={<LiveDemo href="https://westtelecom-demo.vercel.app" host="westtelecom-demo.vercel.app" img="/img/live/westtelecom-home" alt="The WestTelecom demo home page: a coral and ink brand, a phone mock-up and featured mobile plans" />}>
+        <p>
+          The demo needs no CMS project: the site's real GROQ queries run against an in-memory sample dataset, every login, studio and
+          checkout route returns 404, and a banner says the brand is fictional. Try it in English and Chinese.
+        </p>
+      </Section>
+      <Section title="Stack">
+        <StackGroups
+          groups={[
+            ["App", ["Next.js App Router", "React Server Components", "TypeScript", "Tailwind", "next-intl"]],
+            ["Content", ["Sanity v3 embedded studio", "GROQ", "signed webhooks", "on-demand revalidation"]],
+            ["Integrations", ["HubSpot", "NextAuth", "Vercel Analytics"]],
+          ]}
+        />
       </Section>
     </CaseStudy>
   );

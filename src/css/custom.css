@@ -35,6 +35,7 @@
   --needle-west: oklch(78% 0.12 45);
   --needle-relay: oklch(80% 0.07 215);
   --needle-ledger: oklch(80% 0.07 160);
+  --needle-kv: oklch(80% 0.09 305);
 
   --glass: oklch(22% 0.018 268 / 0.58);
   --glass-blur: 22px;
@@ -224,4 +225,15 @@ html.on-photo .navbar__toggle {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* blog list: ink titles, accent on hover */
+.blog-list-page article h2 a,
+.blog-post-page article h1 {
+  color: var(--color-ink);
+}
+
+.blog-list-page article h2 a:hover {
+  color: var(--color-accent-hi);
+  text-decoration: none;
 }

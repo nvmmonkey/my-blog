@@ -23,6 +23,12 @@ export default function WorkIndex() {
                   </li>
                 ))}
               </ul>
+              <ul className="stack index__stack">
+                {p.stack.slice(0, 5).map((s) => (
+                  <li key={s}>{s}</li>
+                ))}
+                {p.live && <li className="stack__live">Live demo</li>}
+              </ul>
             </div>
             <div className="index__thumb">
               <Thumb slug={p.slug} />

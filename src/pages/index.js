@@ -4,6 +4,7 @@ import Link from "@docusaurus/Link";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import HeroScene from "../components/dusk/HeroScene";
 import WorkIndex from "../components/dusk/WorkIndex";
+import DigestScene from "../components/dusk/DigestScene";
 import { useOnPhoto, useRise } from "../components/dusk/motion";
 import "../components/dusk/dusk.css";
 
@@ -19,10 +20,25 @@ const Dot = ({ breathe }) => (
 );
 
 const RUNNING = [
-  { initial: "L", name: "LLM-Digest", line: "Hourly report from 127 sources", fig: "4,100+", unit: "reports", status: "Running", tone: "on", breathe: true },
+  { initial: "L", name: "LLM-Digest", line: "Nine-stage LLM report from 127 sources", fig: "4,100+", unit: "reports", status: "Running", tone: "on", breathe: true },
+  { initial: "K", name: "KV-cache LLM serving", line: "4-bit KV under a learned vLLM scheduler", fig: "6.8×", unit: "faster first token", status: "Done", tone: "on" },
+  { initial: "S", name: "Solana Jito relay", line: "Eight regions, one shared limiter", fig: "4,000+", unit: "egress IPs", status: "Built", tone: "on" },
   { initial: "P", name: "Payment indexer", line: "Card programs traced on chain", fig: "22 of 24", unit: "programs", status: "Reconciling", tone: "open", breathe: true },
-  { initial: "S", name: "Solana MEV research", line: "Bots reverse-engineered, offline-reproducible", fig: "5", unit: "analyses", status: "Done", tone: "on" },
-  { initial: "W", name: "WestTelecom", line: "Bilingual catalogue with a live CMS", fig: "5", unit: "product lines", status: "Shipped", tone: "on" },
+  { initial: "W", name: "WestTelecom", line: "Bilingual catalogue, live demo", fig: "5", unit: "product lines", status: "Live", tone: "on" },
+];
+
+const AI = [
+  { fig: "9", title: "LLM-Digest", body: "A nine-stage pipeline, a RAG agent with cited answers and one model layer with fallbacks, running every hour.", to: "/work/llm-digest", link: "Case study" },
+  { fig: "2.83×", title: "KV-cache serving", body: "4-bit KV and block-sparse Triton kernels under a learned vLLM scheduler on one RTX 3090.", to: "/work/kv-cache", link: "Case study" },
+  { fig: "~20 tools", title: "MCP servers", body: "Open-sourced TypeScript and Python MCP servers that give AI agents RootData's crypto data as tools, over stdio, SSE and Cloudflare Workers.", to: "https://github.com/nvmmonkey/Rootdata-MCP", link: "GitHub" },
+  { fig: "27B", title: "Local inference", body: "Quantized 27B models and vision models on a single 24 GB card with llama.cpp, Ollama and vLLM.", to: "/blog/27b-on-one-3090", link: "Notes" },
+];
+
+const WRITING = [
+  { slug: "autumn-2026", title: "Where I am, autumn 2026" },
+  { slug: "jito-relay-throughput", title: "Designing a bundle relay for 30,000 requests a second" },
+  { slug: "nine-stages-one-conclusion", title: "Nine stages, one conclusion" },
+  { slug: "kv-cache-capstone", title: "Smaller KV cache, faster first token" },
 ];
 
 const PRINCIPLES = [
@@ -67,10 +83,10 @@ export default function Home() {
           <div className="hero__scrim" />
           <div className="wrap hero__inner">
             <div className="hero__copy">
-              <h1>I build the systems that read markets for you.</h1>
+              <h1>I build AI systems that read markets for you.</h1>
               <p>
-                I'm Kit, a full-stack engineer in Vancouver. I write the data pipelines, on-chain indexers and LLM layers that turn a
-                noisy feed into a page a person can act on.
+                I'm Kit, an engineer in Vancouver. I build LLM pipelines and agents, the serving layer under them, and the low-latency
+                infrastructure and data systems that trading runs on.
               </p>
               <div className="actions">
                 <Link className="btn" to="/work">
@@ -106,10 +122,33 @@ export default function Home() {
                 ))}
               </ul>
               <div className="runlist__open">
-                <span>Open to full-stack and data engineering roles</span>
+                <span>Open to AI, full-stack and data engineering roles</span>
                 <Link to="/resume">Resume</Link>
               </div>
             </aside>
+          </div>
+        </section>
+
+        <section className="band ai-band" id="ai">
+          <div className="wrap">
+            <div className="band__head">
+              <h2>AI systems</h2>
+              <p>
+                Below is a replay of one real LLM-Digest run: sources flowing into nine stages, each handing its conclusion to the next. Move
+                the pointer to tilt it, or stall a stage to watch the fallback take over.
+              </p>
+            </div>
+            <DigestScene compact />
+            <ul className="ai-grid">
+              {AI.map((a, i) => (
+                <li key={a.title} className="rise" style={{ "--i": i }}>
+                  <strong>{a.fig}</strong>
+                  <h3>{a.title}</h3>
+                  <p>{a.body}</p>
+                  {a.to.startsWith("http") ? <a href={a.to}>{a.link}</a> : <Link to={a.to}>{a.link}</Link>}
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 
@@ -117,9 +156,29 @@ export default function Home() {
           <div className="wrap">
             <div className="band__head">
               <h2>Selected work</h2>
-              <p>Four projects, each with its own write-up: what the problem was, how it is built and what it measured.</p>
+              <p>Five projects, each with its own write-up: what the problem was, how it is built, its stack and what it measured.</p>
             </div>
             <WorkIndex />
+          </div>
+        </section>
+
+        <section className="band">
+          <div className="wrap">
+            <div className="band__head">
+              <h2>Writing</h2>
+              <p>
+                Longer notes on how these were built. All posts are on the <Link to="/blog">blog</Link>.
+              </p>
+            </div>
+            <ol className="ruled ruled--links">
+              {WRITING.map((w, i) => (
+                <li key={w.slug} className="rise" style={{ "--i": i }}>
+                  <h3>
+                    <Link to={`/blog/${w.slug}`}>{w.title}</Link>
+                  </h3>
+                </li>
+              ))}
+            </ol>
           </div>
         </section>
 

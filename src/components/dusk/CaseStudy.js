@@ -1,6 +1,7 @@
 import React from "react";
 import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
+import useBaseUrl from "@docusaurus/useBaseUrl";
 import { projects, bySlug } from "./projects";
 import { useRise } from "./motion";
 import "./dusk.css";
@@ -36,6 +37,56 @@ export function Highlights({ items }) {
         </li>
       ))}
     </ol>
+  );
+}
+
+export function Stack({ items }) {
+  return (
+    <ul className="stack">
+      {items.map((s) => (
+        <li key={s}>{s}</li>
+      ))}
+    </ul>
+  );
+}
+
+export function StackGroups({ groups }) {
+  return (
+    <dl className="stack-groups">
+      {groups.map(([label, items]) => (
+        <div key={label}>
+          <dt>{label}</dt>
+          <dd>
+            <Stack items={items} />
+          </dd>
+        </div>
+      ))}
+    </dl>
+  );
+}
+
+// A screenshot of the running site in a browser frame, linking to it.
+export function LiveDemo({ href, host, img, alt, children }) {
+  const src = useBaseUrl(`${img}-1440.webp`);
+  const small = useBaseUrl(`${img}-960.webp`);
+  return (
+    <figure className="live-demo rise">
+      <a className="live-demo__frame" href={href} target="_blank" rel="noopener">
+        <span className="live-demo__bar" aria-hidden="true">
+          <i />
+          <i />
+          <i />
+          <span>{host}</span>
+        </span>
+        <img src={src} srcSet={`${small} 960w, ${src} 1440w`} sizes="(max-width: 62rem) 100vw, 60vw" width="1440" height="900" alt={alt} loading="lazy" />
+      </a>
+      <figcaption>
+        {children}
+        <a className="btn" href={href} target="_blank" rel="noopener">
+          Open the live site
+        </a>
+      </figcaption>
+    </figure>
   );
 }
 
@@ -78,6 +129,16 @@ export default function CaseStudy({ slug, role, links = [], stage, children }) {
               </div>
             ))}
           </dl>
+          <div className="case-hero__stack">
+            <Stack items={p.stack} />
+          </div>
+          {p.live && (
+            <div className="case-hero__links">
+              <a className="btn" href={p.live.href} target="_blank" rel="noopener">
+                Live: {p.live.text}
+              </a>
+            </div>
+          )}
         </header>
         {stage && <div className="wrap">{stage}</div>}
         {children}
