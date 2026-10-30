@@ -4,6 +4,12 @@ sidebar_position: 1
 
 # 🙋🏻‍♂️ Intro
 
+:::note[Updated October 2026]
+
+This page and the notes beside it were written in 2023 and 2024 and are kept as they were. For what I work on now, see the [resume](/resume), the [case studies](/work) and the [writing](/blog), starting with [Where I am, autumn 2026](/blog/autumn-2026).
+
+:::
+
 > My blogs & researches mostly written in  **`🇨🇳Chinese`** and  **`🇺🇸English`**, use brower translator if neccessary!
 
 Nice to meet you, my name is Kit!
