@@ -74,7 +74,7 @@ function Card({ p, i, total }) {
       </div>
       <div className="gallery__text">
         <p className="gallery__count num">
-          {String(i + 1).padStart(2, "0")} / {String(total).padStart(2, "0")} · {p.year}
+          {p.year}
         </p>
         <h3>
           <Link to={`/work/${p.slug}`}>{p.name}</Link>
