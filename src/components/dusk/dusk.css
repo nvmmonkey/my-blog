@@ -2793,3 +2793,11 @@ html[data-theme="light"] .tech-orbs {
     height: 2.5rem;
   }
 }
+
+.roles__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs) var(--space-lg);
+  margin: var(--space-xs) 0 0;
+  font-size: var(--text-sm);
+}

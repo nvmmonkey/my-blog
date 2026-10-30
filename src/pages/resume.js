@@ -10,11 +10,16 @@ const EXPERIENCE = [
     when: "Jan 2025 – now",
     what: "Independent quant and MEV developer",
     org: "Low-latency trading systems in Rust, Go and Python, Vancouver",
+    links: [
+      ["Solana relay case study", "/work/solana-mev"],
+      ["Polymarket case study", "/work/polymarket"],
+    ],
     points: [
       "Built a Go gRPC bundle relay, later ported to Rust (tokio, axum), fanning Jito bundles to 8 block-engine regions over 4,000+ egress IPs with token-bucket limits and Retry-After cooldowns.",
       "Fixed a relay throughput collapse with a shared atomic limiter and a min-heap ready queue: proxy wait fell from 13–28 ms to under 0.5 ms.",
       "Built a Rust Solana atomic-arbitrage bot peaking at about $80M daily volume, with Jito bundles, Kamino flash loans, compute budgets for 22 DEXs and an on-chain profit guard.",
       "Wrote about 80% of a live Rust Polymarket trading system (720 of 894 commits): Binance SBE feed, signals, execution, risk, reconciliation and gasless claims.",
+      "Hand-wrote its Binance SBE decoder, about 1.65 s ahead of the Chainlink feed that settles each market; priced markets as binary options (N(d2)) behind eight entry gates; validated on a live-parity backtester over 17,549 markets with sweeps of up to 100,800 configurations and out-of-sample checks.",
       "Built Robinhood Chain (Arbitrum L2) arbitrage with Bellman-Ford cycle search, bit-exact Uniswap V3/V4 tick math and Solidity flash executors; sign-and-send went from 672 ms to 12 ms.",
     ],
   },
@@ -22,6 +27,7 @@ const EXPERIENCE = [
     when: "Sep 2022 – Sep 2026",
     what: "Co-founder, product manager and advisor",
     org: "RootData, crypto data platform",
+    links: [["RootData case study", "/work/rootdata"]],
     points: [
       "Co-founded the platform and designed and collected its database from zero; as PM grew it to 428K users (about 14× organic in 12 months), 700K–1M daily page views, 22K+ projects and 200+ API partners including Binance Alpha and OKX Boost.",
       "Built data charting, SEO, anti-crawling, UI and CRM; open-sourced TypeScript and Python MCP servers exposing about 20 RootData tools to AI agents.",
@@ -32,6 +38,7 @@ const EXPERIENCE = [
     when: "Feb 2024 – Nov 2024",
     what: "Website project manager and full-stack developer",
     org: "Telecom reseller (client), shown here as WestTelecom",
+    links: [["WestTelecom case study", "/work/westtelecom"]],
     points: [
       "Shipped a bilingual plan catalogue on Next.js 13 App Router, TypeScript and Sanity v3 across mobile, internet, TV and security (229 commits).",
       "Built filtering, sorting, comparison and modal UIs; wired HubSpot lead capture, NextAuth and signed webhooks for on-demand revalidation; later audited it and moved leaked secrets server-side.",
@@ -62,6 +69,7 @@ const PROJECTS = [
     when: "May 2026 – now",
     what: "LLM-Digest, self-hosted market intelligence",
     org: "Next.js 16, React 19, TypeScript, AI SDK v6, SQLite FTS5",
+    links: [["LLM-Digest case study", "/work/llm-digest"]],
     points: [
       "Nine-stage narrative LLM pipeline with Zod-validated JSON hand-offs, jsonrepair and retry, byte-level stall watchdogs and per-task model fallback; 4,100+ reports from 127 sources.",
       "Tool-calling RAG agent (6 tools, phased 3-step loop) fusing SQLite FTS5/BM25 with 12 web search sources by reciprocal rank fusion, with query rewriting and citation checks.",
@@ -74,15 +82,26 @@ const PROJECTS = [
     when: "Jul 2026 – Aug 2026",
     what: "KV-cache coordinated LLM serving, graduate capstone",
     org: "Python, vLLM, Triton, Llama-3.1-8B on an RTX 3090; team of 4",
+    links: [["KV-cache case study", "/work/kv-cache"]],
     points: [
       "Owned the KV-cache layer under a learning-to-rank vLLM scheduler: 4-bit KV gave 2.83× token capacity and cut mean time to first token 6.8× at 64 requests a second.",
       "Wrote block-sparse attention Triton decode kernels (1.33–1.75× standalone) and patched vLLM's decode path: −22% time per output token, −47% P99.",
     ],
   },
   {
+    when: "2026",
+    what: "Stablecoin card-payment indexer",
+    org: "TypeScript, ClickHouse, Postgres, EVM and Solana adapters",
+    links: [["Payment indexer case study", "/work/paymentindexer"]],
+    points: [
+      "Rebuilds stablecoin card-payment volume from self-indexed chain data, issuer by issuer: 22 of 24 card programs traced, 413 registered addresses each with its evidence, within ±0.6% of the public benchmark on EVM mainnets.",
+    ],
+  },
+  {
     when: "2023 – now",
     what: "Local LLM inference lab",
     org: "Ollama, llama.cpp (CUDA), GGUF K-quants, ComfyUI, Hugging Face",
+    links: [["Notes on a 27B model on one RTX 3090", "/blog/27b-on-one-3090"]],
     points: ["Run and tune quantized 27B LLMs and vision models on one 24 GB RTX 3090; trained and published an OPT-125M ranker and dataset on Hugging Face."],
   },
 ];
@@ -127,6 +146,15 @@ function Roles({ items }) {
                 <li key={p}>{p}</li>
               ))}
             </ul>
+            {r.links && (
+              <p className="roles__links no-print">
+                {r.links.map(([label, to]) => (
+                  <Link key={to} to={to}>
+                    {label} →
+                  </Link>
+                ))}
+              </p>
+            )}
           </div>
         </li>
       ))}
