@@ -4,78 +4,103 @@ import Link from "@docusaurus/Link";
 import { useRise } from "../components/dusk/motion";
 import "../components/dusk/dusk.css";
 
+// From the owner's resumes (October 2026). Home address and phone stay off the site.
 const EXPERIENCE = [
   {
-    when: "2024 – now",
-    what: "Independent engineer",
-    org: "Own projects and client work, Vancouver",
+    when: "Jan 2025 – now",
+    what: "Independent quant and MEV developer",
+    org: "Low-latency trading systems in Rust, Go and Python, Vancouver",
     points: [
-      "Built LLM-Digest: an hourly market report from about 127 sources through a nine-stage LLM pipeline, 4,100+ reports written. Next.js 16, SQLite, Vercel AI SDK.",
-      "Built a stablecoin card-payment indexer that reconciles to within 0.6% of a public benchmark on five EVM mainnets. TypeScript, ClickHouse, Postgres.",
-      "Ran Solana MEV research and infrastructure: reverse-engineered five arbitrage bots with offline-reproducible evidence, and wrote a Go relay from JSON-RPC to gRPC across nine block-engine regions.",
-      "Delivered a bilingual telecom plan catalogue with an embedded CMS for a client, then audited and hardened it: secrets off the client, parameterised queries, a working revalidation webhook.",
+      "Built a Go gRPC bundle relay, later ported to Rust (tokio, axum), fanning Jito bundles to 8 block-engine regions over 4,000+ egress IPs with token-bucket limits and Retry-After cooldowns.",
+      "Fixed a relay throughput collapse with a shared atomic limiter and a min-heap ready queue: proxy wait fell from 13–28 ms to under 0.5 ms.",
+      "Built a Rust Solana atomic-arbitrage bot peaking at about $80M daily volume, with Jito bundles, Kamino flash loans, compute budgets for 22 DEXs and an on-chain profit guard.",
+      "Wrote about 80% of a live Rust Polymarket trading system (720 of 894 commits): Binance SBE feed, signals, execution, risk, reconciliation and gasless claims.",
+      "Built Robinhood Chain (Arbitrum L2) arbitrage with Bellman-Ford cycle search, bit-exact Uniswap V3/V4 tick math and Solidity flash executors; sign-and-send went from 672 ms to 12 ms.",
     ],
   },
   {
-    when: "2022 – 2026",
-    what: "Founding team: research, product and API",
-    org: "RootData, Web3 data platform",
+    when: "Sep 2022 – Sep 2026",
+    what: "Product manager and advisor, founding team",
+    org: "RootData, crypto data platform",
     points: [
-      "Worked on data preparation, charting, SEO, anti-crawling, UI and the back-office CRM from launch.",
-      "Led the product for the RootData MCP server in 2025, then API business development.",
-      "Grew the launch to 1,600 registered users and 18,000 daily page views within two months.",
-      "Brought in ecosystem listings with partners including Conflux and Scroll.",
+      "Founding-team PM for a platform grown to 428K users (about 14× organic in 12 months), 700K–1M daily page views, 22K+ projects and 200+ API partners including Binance Alpha and OKX Boost.",
+      "Built data charting, SEO, anti-crawling, UI and CRM; open-sourced TypeScript and Python MCP servers exposing about 20 RootData tools to AI agents.",
+      "Built a 61-model XGBoost analytics app over 6,000+ projects (launch AUC 0.81) from 116 automated experiments.",
     ],
   },
   {
-    when: "2022 – 2025",
-    what: "Investment research",
-    org: "CatcherVC and other crypto venture funds",
+    when: "Feb 2024 – Nov 2024",
+    what: "Website project manager and full-stack developer",
+    org: "Telecom reseller (client), shown here as WestTelecom",
     points: [
-      "Reviewed more than 200 seed-round deals in a year and wrote technical due diligence across ZK proofs, account abstraction, MPC and FHE.",
-      "Researched liquid tokens and supported portfolio companies after investment.",
+      "Shipped a bilingual plan catalogue on Next.js 13 App Router, TypeScript and Sanity v3 across mobile, internet, TV and security (229 commits).",
+      "Built filtering, sorting, comparison and modal UIs; wired HubSpot lead capture, NextAuth and signed webhooks for on-demand revalidation; later audited it and moved leaked secrets server-side.",
     ],
   },
   {
-    when: "2022",
-    what: "Product growth and business development",
+    when: "Jun 2024 – Jun 2026",
+    what: "Investment advisor",
+    org: "J17 Crypto, family office (remote)",
+    points: ["Advised portfolio management and due diligence for about $90M in digital assets; built Dune SQL dashboards for position and risk monitoring."],
+  },
+  {
+    when: "Mar 2022 – Sep 2026",
+    what: "Investment partner",
+    org: "CatcherVC",
+    points: ["Reviewed 200+ seed deals a year and managed $4M+ in digital assets; researched ZK proofs, account abstraction and FHE/MPC. Portfolio includes MegaETH, GRVT and Scroll."],
+  },
+  {
+    when: "Mar 2022 – Sep 2026",
+    what: "Overseas operations and business development",
     org: "ChainCatcher",
-    points: ["Wrote research on modular chains, on-chain games and Web3 fundraising; ran bilingual growth campaigns and partner deals."],
+    points: ["Co-interviewed founders of ether.fi, LayerZero Labs and Wormhole Foundation; co-hosted a Hong Kong Web3 Festival 2023 side event; closed BD deals with LayerZero, Mina and Consensys."],
+  },
+];
+
+const PROJECTS = [
+  {
+    when: "May 2026 – now",
+    what: "LLM-Digest, self-hosted market intelligence",
+    org: "Next.js 16, React 19, TypeScript, AI SDK v6, SQLite FTS5",
+    points: [
+      "Tool-calling RAG agent fusing SQLite FTS5/BM25 with 12 web search sources by reciprocal rank fusion, with query rewriting and citation checks.",
+      "One client over 7 LLM providers: encrypted key vault, per-provider pacing, daily budgets, tool-call repair and per-run cost tracking.",
+      "Self-hosted with systemd and Cloudflare Tunnel; staged-build deploys cut downtime from about 2.5 minutes to about 3 seconds.",
+    ],
   },
   {
-    when: "2021",
-    what: "Strategy developer",
-    org: "TradingView, published scripts",
-    points: ["Built and published back-tested trading strategies (moving-average crosses, stochastic and RSI with Supertrend)."],
+    when: "Jul 2026 – Aug 2026",
+    what: "KV-cache coordinated LLM serving, graduate capstone",
+    org: "Python, vLLM, Triton, Llama-3.1-8B on an RTX 3090; team of 4",
+    points: [
+      "Owned the KV-cache layer under a learning-to-rank vLLM scheduler: 4-bit KV gave 2.83× token capacity and cut mean time to first token 6.8× at 64 requests a second.",
+      "Wrote block-sparse attention Triton decode kernels (1.33–1.75× standalone) and patched vLLM's decode path: −22% time per output token, −47% P99.",
+    ],
   },
 ];
 
 const EDUCATION = [
   {
-    when: "2025 – 2026",
+    when: "Jan 2025 – Aug 2026",
     what: "MSc, Applied Computer Science",
     org: "Fairleigh Dickinson University, Vancouver",
-    points: [
-      "Capstone: KV-cache-aware latency optimisation for LLM inference on a learning-to-rank scheduler.",
-      "Distributed databases, algorithms, operating systems, big data and machine learning, UI design.",
-    ],
+    points: ["CGPA 3.56/4. Capstone, Distributed Database Systems and Advanced Operating Systems: A."],
   },
   {
-    when: "2021",
+    when: "Jan 2020 – Sep 2021",
     what: "BBA, Finance",
     org: "Beedie School of Business, Simon Fraser University",
-    points: ["Invited to the UC Berkeley Haas summer exchange."],
+    points: ["CGPA 3.4/4, Statistics 3.8/4. Invited to the UC Berkeley Haas summer program."],
   },
 ];
 
 const SKILLS = [
-  ["Languages", "TypeScript, JavaScript, Python, Go, SQL; working Rust and Solidity"],
-  ["Web", "Next.js, React, Node.js, Tailwind, Docusaurus, Sanity"],
-  ["Data", "SQLite, Postgres, ClickHouse, Dune, Drizzle"],
-  ["Chains", "Solana and EVM: RPC, gRPC streams, instruction and event decoding"],
-  ["LLM", "Vercel AI SDK, multi-provider routing, vLLM, local inference on an RTX 3090"],
-  ["Ops", "Linux, systemd, Docker, Cloudflare Tunnel, HAProxy, Vercel"],
-  ["Spoken", "English, Mandarin Chinese"],
+  ["Systems", "Rust (tokio, axum), Go, Python, TypeScript, C/C++, SQL, gRPC, Linux"],
+  ["Web", "Next.js (App Router, RSC), React 19, Tailwind, shadcn/Radix, next-intl, Node.js, Sanity, NextAuth"],
+  ["ML systems", "vLLM, Triton, PyTorch, KV-cache quantization, llama.cpp, Ollama, MCP, Vercel AI SDK"],
+  ["Chains", "Solana (Jito, Yellowstone, Jupiter), Polymarket CLOB, Uniswap V3/V4, Solidity and Foundry"],
+  ["Finance", "Bloomberg, S&P Capital IQ, Dune SQL, DCF and LBO modelling"],
+  ["Spoken", "English, Mandarin and Cantonese"],
 ];
 
 function Roles({ items }) {
@@ -105,10 +130,10 @@ export default function Resume() {
     <Layout title="Resume" description="Kit Kong, full-stack engineer in Vancouver: experience, education and skills.">
       <main className="dusk">
         <header className="wrap case-hero">
-          <h1>Kit Kong</h1>
+          <h1>Wenhui (Kit) Kang</h1>
           <p className="case-hero__claim">
-            Full-stack engineer in Burnaby, BC. I build market data pipelines, on-chain indexers and LLM systems, and I came to engineering
-            from finance and venture research.
+            Engineer in Burnaby, BC, working on low-latency trading systems, LLM infrastructure and full-stack products. I came to
+            engineering from finance and venture research.
           </p>
           <div className="actions no-print">
             <button type="button" className="btn" onClick={() => window.print()}>
@@ -145,6 +170,14 @@ export default function Resume() {
               <h2>Experience</h2>
             </div>
             <Roles items={EXPERIENCE} />
+          </div>
+        </section>
+        <section className="band">
+          <div className="wrap">
+            <div className="band__head">
+              <h2>Selected projects</h2>
+            </div>
+            <Roles items={PROJECTS} />
           </div>
         </section>
         <section className="band">

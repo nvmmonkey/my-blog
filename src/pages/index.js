@@ -45,11 +45,12 @@ const PRINCIPLES = [
 ];
 
 const ROLES = [
+  { when: "2025 – now", what: "Independent quant and MEV developer", org: "Rust, Go and Python trading systems" },
   { when: "2025 – 2026", what: "MSc, Applied Computer Science", org: "Fairleigh Dickinson University, Vancouver" },
-  { when: "2022 – 2026", what: "Founding team: research, product, API", org: "RootData, Web3 data platform" },
-  { when: "2024 – 2025", what: "Due diligence and liquid research, contract", org: "Crypto venture funds" },
+  { when: "2022 – 2026", what: "Product manager and advisor, founding team", org: "RootData, crypto data platform" },
+  { when: "2022 – 2026", what: "Investment partner", org: "CatcherVC" },
   { when: "2021", what: "BBA, Finance", org: "Beedie School of Business, Simon Fraser University" },
-];
+]
 
 export default function Home() {
   const hero = useRef(null);
