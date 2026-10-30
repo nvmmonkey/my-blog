@@ -3,9 +3,10 @@ import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import HeroScene from "../components/dusk/HeroScene";
-import WorkIndex from "../components/dusk/WorkIndex";
+import ProjectGallery from "../components/dusk/ProjectGallery";
 import TechOrbs from "../components/dusk/TechOrbs";
 import { useOnPhoto, useRise } from "../components/dusk/motion";
+import { useFlow } from "../components/dusk/flow";
 import "../components/dusk/dusk.css";
 
 const Check = () => (
@@ -23,6 +24,7 @@ const RUNNING = [
   { initial: "L", name: "LLM-Digest", line: "Nine-stage LLM report from 127 sources", fig: "4,100+", unit: "reports", status: "Running", tone: "on", breathe: true },
   { initial: "K", name: "KV-cache LLM serving", line: "4-bit KV under a learned vLLM scheduler", fig: "6.8×", unit: "faster first token", status: "Done", tone: "on" },
   { initial: "S", name: "Solana Jito relay", line: "Eight regions, one shared limiter", fig: "4,000+", unit: "egress IPs", status: "Built", tone: "on" },
+  { initial: "R", name: "RootData", line: "Founding team, crypto data platform", fig: "428K", unit: "users", status: "2022–2026", tone: "on" },
   { initial: "P", name: "Payment indexer", line: "Card programs traced on chain", fig: "22 of 24", unit: "programs", status: "Reconciling", tone: "open", breathe: true },
   { initial: "W", name: "WestTelecom", line: "Bilingual catalogue, live demo", fig: "5", unit: "product lines", status: "Live", tone: "on" },
 ];
@@ -41,37 +43,11 @@ const WRITING = [
   { slug: "kv-cache-capstone", title: "Smaller KV cache, faster first token" },
 ];
 
-const PRINCIPLES = [
-  {
-    head: "Every number traces back",
-    body: "LLM-Digest hands typed conclusions from stage to stage and links each figure to the post it came from. The payment indexer keeps an evidence row behind every address it attributes.",
-  },
-  {
-    head: "Say what was observed and what was guessed",
-    body: "The Solana analyses tag each claim as observed, inferred or unknown, with the file, RPC result or transaction that backs it. One command recomputes every table offline.",
-  },
-  {
-    head: "Measure the result you were hoping not to get",
-    body: "A send path cut from 672 ms to about 12 ms still landed none of 22 attempts from a remote host. That isolated distance, not code, as the limit, before more time went into code.",
-  },
-  {
-    head: "Fail closed",
-    body: "When a venue's fee turned out to be dynamic and unbounded, the router stopped routing that pool rather than price it with a guessed constant.",
-  },
-];
-
-const ROLES = [
-  { when: "2025 – now", what: "Independent quant and MEV developer", org: "Rust, Go and Python trading systems" },
-  { when: "2025 – 2026", what: "MSc, Applied Computer Science", org: "Fairleigh Dickinson University, Vancouver" },
-  { when: "2022 – 2026", what: "Product manager and advisor, founding team", org: "RootData, crypto data platform" },
-  { when: "2022 – 2026", what: "Investment partner", org: "CatcherVC" },
-  { when: "2021", what: "BBA, Finance", org: "Beedie School of Business, Simon Fraser University" },
-]
-
 export default function Home() {
   const hero = useRef(null);
   useOnPhoto(hero);
   useRise();
+  useFlow();
   const beach = useBaseUrl("/img/photo/mystic-beach-2400.webp");
   const beachSmall = useBaseUrl("/img/photo/mystic-beach-1280.webp");
 
@@ -83,7 +59,7 @@ export default function Home() {
           <div className="hero__scrim" />
           <div className="wrap hero__inner">
             <div className="hero__copy">
-              <h1>I build AI systems that read markets for you.</h1>
+              <h1 className="flow-words">I build AI systems that read markets for you.</h1>
               <p>
                 I'm Kit, an engineer in Vancouver. I build LLM pipelines and agents, the serving layer under them, and the low-latency
                 infrastructure and data systems that trading runs on.
@@ -129,9 +105,11 @@ export default function Home() {
           </div>
         </section>
 
+        <ProjectGallery />
+
         <section className="band band--tight" id="stack">
           <div className="wrap">
-            <div className="band__head">
+            <div className="band__head flow-up">
               <h2>Stack</h2>
               <p>What the projects below are written in. Grab a ball and spin it.</p>
             </div>
@@ -141,7 +119,7 @@ export default function Home() {
 
         <section className="band ai-band" id="ai">
           <div className="wrap">
-            <div className="band__head">
+            <div className="band__head flow-up">
               <h2>AI systems</h2>
               <p>
                 LLM pipelines and agents I run, the serving layer under them, and the tools that let other agents use my data. The{" "}
@@ -161,22 +139,12 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="band band--flush" id="work">
-          <div className="wrap">
-            <div className="band__head">
-              <h2>Selected work</h2>
-              <p>Six projects, each with its own write-up: what the problem was, how it is built, its stack and what it measured.</p>
-            </div>
-            <WorkIndex />
-          </div>
-        </section>
-
         <section className="band">
           <div className="wrap">
-            <div className="band__head">
+            <div className="band__head flow-up">
               <h2>Writing</h2>
               <p>
-                Longer notes on how these were built. All posts are on the <Link to="/blog">blog</Link>.
+                Longer notes on how these were built. All posts are on the <Link to="/blog">blog</Link>, and there is more about me on <Link to="/about">About me</Link>.
               </p>
             </div>
             <ol className="ruled ruled--links">
@@ -185,45 +153,6 @@ export default function Home() {
                   <h3>
                     <Link to={`/blog/${w.slug}`}>{w.title}</Link>
                   </h3>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
-
-        <section className="band">
-          <div className="wrap">
-            <div className="band__head">
-              <h2>How I work</h2>
-              <p>Habits that show up across the projects, each with the place it came from.</p>
-            </div>
-            <ol className="ruled">
-              {PRINCIPLES.map((p, i) => (
-                <li key={p.head} className="rise" style={{ "--i": i }}>
-                  <h3>{p.head}</h3>
-                  <p>{p.body}</p>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
-
-        <section className="band">
-          <div className="wrap">
-            <div className="band__head">
-              <h2>Background</h2>
-              <p>
-                Finance first, then engineering. The full history is on the <Link to="/resume">resume</Link>.
-              </p>
-            </div>
-            <ol className="roles">
-              {ROLES.map((r, i) => (
-                <li key={r.what} className="rise" style={{ "--i": i }}>
-                  <span className="roles__when">{r.when}</span>
-                  <div>
-                    <h3>{r.what}</h3>
-                    <p className="roles__org">{r.org}</p>
-                  </div>
                 </li>
               ))}
             </ol>

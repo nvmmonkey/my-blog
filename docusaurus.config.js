@@ -42,7 +42,7 @@ const config = {
         },
         blog: {
           routeBasePath: "blog",
-          blogTitle: "Writing",
+          blogTitle: "Blog",
           blogDescription: "Notes from building AI systems, trading infrastructure and data pipelines.",
           blogSidebarTitle: "All posts",
           blogSidebarCount: "ALL",
@@ -65,7 +65,7 @@ const config = {
     ({
       colorMode: {
         defaultMode: "dark",
-        disableSwitch: true,
+        disableSwitch: false,
         respectPrefersColorScheme: false,
       },
       navbar: {
@@ -75,10 +75,10 @@ const config = {
           src: "img/mark.svg",
         },
         items: [
-          { label: "Work", to: "/work", position: "left" },
-          { label: "Writing", to: "/blog", position: "left" },
-          { label: "Resume", to: "/resume", position: "left" },
-          { label: "Notes", to: "/docs/intro", position: "left" },
+          { label: "Projects", to: "/work", position: "left" },
+          { label: "About Me", to: "/about", position: "left" },
+          { label: "Experience", to: "/resume", position: "left" },
+          { label: "Blog", to: "/blog", position: "left" },
           { label: "GitHub", href: "https://github.com/nvmmonkey", position: "right" },
         ],
       },
@@ -86,7 +86,7 @@ const config = {
         style: "dark",
         links: [
           {
-            title: "Work",
+            title: "Projects",
             items: [
               { label: "LLM-Digest", to: "/work/llm-digest" },
               { label: "KV-cache LLM serving", to: "/work/kv-cache" },
@@ -97,7 +97,7 @@ const config = {
             ],
           },
           {
-            title: "Writing",
+            title: "Blog",
             items: [
               { label: "All posts", to: "/blog" },
               { label: "Where I am, autumn 2026", to: "/blog/autumn-2026" },

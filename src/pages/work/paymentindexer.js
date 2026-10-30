@@ -54,17 +54,17 @@ function Flow() {
         <text x="706" y="184" className="d-muted">
           attributed only
         </text>
-        <path d="M810 180 H840" className="d-line" />
-        <rect x="840" y="130" width="110" height="100" rx="10" className="d-box" />
-        <text x="854" y="156">Reconcile</text>
-        <text x="854" y="174" className="d-muted">
+        <path d="M810 180 H828" className="d-line" />
+        <rect x="828" y="130" width="126" height="100" rx="10" className="d-box" />
+        <text x="840" y="156">Reconcile</text>
+        <text x="840" y="174" className="d-muted">
           against a public
         </text>
-        <text x="854" y="189" className="d-muted">
+        <text x="840" y="189" className="d-muted">
           benchmark, never
         </text>
-        <text x="854" y="204" className="d-muted">
-          used as input
+        <text x="840" y="204" className="d-muted">
+          an input
         </text>
       </svg>
     </div>
