@@ -7,7 +7,7 @@ const config = {
   tagline: "Full-stack engineer working on market data, on-chain infrastructure and LLM pipelines",
   url: "https://blog.kitkong.xyz",
   baseUrl: "/",
-  onBrokenLinks: "warn",
+  onBrokenLinks: "throw",
   markdown: {
     format: "detect",
     hooks: { onBrokenMarkdownLinks: "warn" },
@@ -53,6 +53,7 @@ const config = {
     ({
       colorMode: {
         defaultMode: "dark",
+        disableSwitch: true,
         respectPrefersColorScheme: false,
       },
       navbar: {
@@ -75,7 +76,7 @@ const config = {
             title: "Work",
             items: [
               { label: "LLM-Digest", to: "/work/llm-digest" },
-              { label: "Solana MEV relay", to: "/work/solana-mev" },
+              { label: "Solana MEV research", to: "/work/solana-mev" },
               { label: "WestTelecom", to: "/work/westtelecom" },
               { label: "Payment indexer", to: "/work/paymentindexer" },
             ],

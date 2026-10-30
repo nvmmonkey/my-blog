@@ -1,30 +1,227 @@
-/**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
- */
+/* hallmark · theme: dusk · dials: fog/periwinkle-apricot/glass · motion: hero fog (webgl), rise-once rows, one scroll spine */
 
-/* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --color-paper: oklch(17.5% 0.014 268);
+  --color-paper-2: oklch(21% 0.016 268);
+  --color-paper-3: oklch(25% 0.017 268);
+  --color-ink: oklch(96% 0.006 75);
+  --color-ink-2: oklch(85% 0.01 262);
+  --color-muted: oklch(70% 0.016 262);
+  --color-rule: oklch(30% 0.016 266);
+  --color-light: oklch(100% 0 0);
+  --color-shade: oklch(10% 0.022 268);
+  --color-accent: oklch(77% 0.1 274);
+  --color-accent-ink: oklch(19% 0.035 274);
+  --color-accent-hi: oklch(84% 0.085 274);
+  --color-accent-deep: oklch(44% 0.13 274);
+  --color-accent-soft: oklch(91% 0.038 274);
+  --color-focus: oklch(80% 0.1 274);
+  --color-accent-2: oklch(83% 0.095 62);
+  --color-day-ink: oklch(22% 0.022 268);
+  --color-day-muted: oklch(38% 0.022 266);
+  --color-fog: oklch(94% 0.012 70);
+  --color-well: oklch(95.5% 0.008 75);
+  --color-well-2: oklch(92% 0.01 75);
+  --color-well-ink: oklch(21% 0.016 268);
+  --color-well-muted: oklch(47% 0.016 265);
+  --color-well-rule: oklch(87.5% 0.009 75);
+  --color-card: oklch(99.5% 0.003 75);
+  --color-print-paper: oklch(100% 0 0);
+  --color-print-ink: oklch(18% 0 0);
+  --color-print-rule: oklch(85% 0 0);
+
+  /* one needle per project, shown only on that project's rows and pages */
+  --needle-digest: oklch(90% 0.19 122);
+  --needle-west: oklch(78% 0.12 45);
+  --needle-relay: oklch(80% 0.07 215);
+  --needle-ledger: oklch(80% 0.07 160);
+
+  --glass: oklch(22% 0.018 268 / 0.58);
+  --glass-blur: 22px;
+  --glass-hi: inset 0 1px 0 oklch(100% 0 0 / 0.1), inset 0 0 0 1px oklch(100% 0 0 / 0.06);
+  --shadow-card: 0 1px 0 oklch(100% 0 0 / 0.06) inset, 0 40px 80px -32px oklch(8% 0.02 268 / 0.7);
+
+  --font-display: "Wix Madefor Display", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Wix Madefor Text", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+
+  --radius-card: 18px;
+  --radius-inner: 10px;
+  --radius-pill: 999px;
+  --tracking-display: -0.022em;
+  --display-weight: 500;
+
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+  --space-2xl: 4rem;
+  --space-3xl: 7rem;
+  --gutter: clamp(1rem, 4vw, 3rem);
+  --measure: 68ch;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Infima, mapped onto dusk */
+  --ifm-color-primary: var(--color-accent);
+  --ifm-color-primary-dark: var(--color-accent);
+  --ifm-color-primary-darker: var(--color-accent-deep);
+  --ifm-color-primary-darkest: var(--color-accent-deep);
+  --ifm-color-primary-light: var(--color-accent-hi);
+  --ifm-color-primary-lighter: var(--color-accent-hi);
+  --ifm-color-primary-lightest: var(--color-accent-soft);
+  --ifm-background-color: var(--color-paper);
+  --ifm-background-surface-color: var(--color-paper-2);
+  --ifm-font-color-base: var(--color-ink-2);
+  --ifm-heading-color: var(--color-ink);
+  --ifm-color-content: var(--color-ink-2);
+  --ifm-color-content-secondary: var(--color-muted);
+  --ifm-font-family-base: var(--font-body);
+  --ifm-heading-font-family: var(--font-display);
+  --ifm-font-family-monospace: var(--font-mono);
+  --ifm-heading-font-weight: var(--display-weight);
+  --ifm-font-size-base: 17px;
+  --ifm-line-height-base: 1.55;
+  --ifm-link-color: var(--color-accent);
+  --ifm-link-hover-color: var(--color-accent-hi);
+  --ifm-toc-border-color: var(--color-rule);
+  --ifm-hr-background-color: var(--color-rule);
+  --ifm-color-emphasis-200: var(--color-rule);
+  --ifm-color-emphasis-300: var(--color-rule);
+  --ifm-code-background: var(--color-paper-3);
+  --ifm-code-font-size: 92%;
+  --ifm-navbar-background-color: color-mix(in oklab, var(--color-paper) 72%, transparent);
+  --ifm-navbar-link-color: var(--color-ink-2);
+  --ifm-navbar-link-hover-color: var(--color-ink);
+  --ifm-navbar-height: 4rem;
+  --ifm-footer-background-color: var(--color-shade);
+  --ifm-footer-link-color: var(--color-muted);
+  --ifm-footer-title-color: var(--color-ink);
+  --ifm-menu-color: var(--color-muted);
+  --ifm-menu-color-active: var(--color-ink);
+  --ifm-menu-color-background-active: var(--color-paper-3);
+  --ifm-menu-color-background-hover: var(--color-paper-2);
+  --ifm-table-border-color: var(--color-rule);
+  --ifm-table-stripe-background: var(--color-paper-2);
+  --ifm-transition-fast: 160ms;
+  --docusaurus-highlighted-code-line-bg: oklch(30% 0.03 274 / 0.5);
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+html,
+body {
+  overflow-x: clip;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink-2);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: var(--display-weight);
+  letter-spacing: var(--tracking-display);
+  color: var(--color-ink);
+  overflow-wrap: break-word;
+  min-width: 0;
+}
+
+::selection {
+  background: var(--color-accent-deep);
+  color: var(--color-ink);
+}
+
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+  transition: none;
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+/* navbar: slate glass, transparent while it sits on the photograph */
+.navbar {
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.35);
+  backdrop-filter: blur(var(--glass-blur)) saturate(1.35);
+  box-shadow: inset 0 -1px 0 oklch(100% 0 0 / 0.06);
+  transition: background-color 240ms var(--ease-out), box-shadow 240ms var(--ease-out);
+}
+
+.navbar__title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: var(--tracking-display);
+  color: var(--color-ink);
+}
+
+.navbar__logo {
+  height: 1.5rem;
+}
+
+html.on-photo .navbar {
+  background: transparent;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+html.on-photo .navbar__title,
+html.on-photo .navbar__link {
+  color: var(--color-day-ink);
+}
+
+html.on-photo .navbar__toggle {
+  color: var(--color-day-ink);
+}
+
+.footer,
+.footer--dark {
+  border-top: 1px solid var(--color-rule);
+  background-color: var(--color-shade);
+}
+
+.footer__title {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.9375rem;
+}
+
+/* docs read on slate */
+.markdown h1,
+.markdown h2 {
+  letter-spacing: var(--tracking-display);
+}
+
+.markdown {
+  --ifm-h1-font-size: clamp(2rem, 3.4vw, 2.75rem);
+}
+
+.theme-doc-sidebar-container {
+  border-right-color: var(--color-rule) !important;
+}
+
+.pagination-nav__link {
+  border-color: var(--color-rule);
+  border-radius: var(--radius-inner);
+}
+
+.alert {
+  --ifm-alert-border-radius: var(--radius-inner);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
