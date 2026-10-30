@@ -164,7 +164,17 @@ export default function ProjectGallery() {
   return (
     <section className="gallery" aria-roledescription="carousel" aria-label="Projects">
       <div className="wrap gallery__head">
-        <h2>Projects</h2>
+        <div className="gallery__titlebar">
+          <h2>Projects</h2>
+          <div className="gallery__nav">
+            <button type="button" className="gallery__arrow" onClick={() => go(current - 1)} aria-label="Previous project">
+              <Chevron dir="prev" />
+            </button>
+            <button type="button" className="gallery__arrow" onClick={() => go(current + 1)} aria-label="Next project">
+              <Chevron dir="next" />
+            </button>
+          </div>
+        </div>
         <p>{total} projects, each with its own write-up. The round link on the picture goes straight to the live site.</p>
       </div>
       <div className="deck" tabIndex={0} onKeyDown={onKey} onPointerDown={onDown} onPointerUp={onUp} onPointerCancel={() => (drag.current = null)} aria-label="Projects, use the left and right arrow keys to move between them">
@@ -175,9 +185,6 @@ export default function ProjectGallery() {
         </div>
       </div>
       <div className="wrap deck__controls">
-        <button type="button" className="gallery__arrow" onClick={() => go(current - 1)} aria-label="Previous project">
-          <Chevron dir="prev" />
-        </button>
         <ol className="deck__dots">
           {projects.map((p, i) => (
             <li key={p.slug}>
@@ -185,9 +192,6 @@ export default function ProjectGallery() {
             </li>
           ))}
         </ol>
-        <button type="button" className="gallery__arrow" onClick={() => go(current + 1)} aria-label="Next project">
-          <Chevron dir="next" />
-        </button>
         <p className="sr-only" aria-live="polite">
           Showing project {current + 1} of {total}: {projects[current].name}
         </p>

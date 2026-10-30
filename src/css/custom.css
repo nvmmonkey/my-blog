@@ -335,6 +335,15 @@ html.menu-open body {
   overscroll-behavior: none;
 }
 
+/* the body is pinned at -scrollY while the menu is open; without this the sticky bar,
+   and on iOS the sheet inside it, would sit that far above the screen */
+html.menu-open .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
 .navbar-sidebar .menu__list-item + .menu__list-item {
   border-top: 1px solid var(--color-rule);
 }
