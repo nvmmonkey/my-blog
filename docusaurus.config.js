@@ -83,49 +83,8 @@ const config = {
           { label: "GitHub", href: "https://github.com/nvmmonkey", position: "right" },
         ],
       },
-      footer: {
-        style: "dark",
-        links: [
-          {
-            title: "Projects",
-            items: [
-              { label: "LLM-Digest", to: "/work/llm-digest" },
-              { label: "KV-cache LLM serving", to: "/work/kv-cache" },
-              { label: "Solana MEV and Jito relay", to: "/work/solana-mev" },
-              { label: "RootData", to: "/work/rootdata" },
-              { label: "Payment indexer", to: "/work/paymentindexer" },
-              { label: "WestTelecom", to: "/work/westtelecom" },
-            ],
-          },
-          {
-            title: "Blog",
-            items: [
-              { label: "All posts", to: "/blog" },
-              { label: "Where I am, autumn 2026", to: "/blog/autumn-2026" },
-              { label: "RSS", href: "https://blog.kitkong.xyz/blog/rss.xml" },
-            ],
-          },
-          {
-            title: "Notebook, 2023–2024",
-            items: [
-              { label: "Blockchain", to: "/docs/blockchain/bitcoin" },
-              { label: "Coding", to: "/docs/coding/nextjs-mongoose" },
-              { label: "VC deals", to: "/docs/vc/20230401" },
-              { label: "AI", to: "/docs/ai/read" },
-            ],
-          },
-          {
-            title: "Elsewhere",
-            items: [
-              { label: "GitHub", href: "https://github.com/nvmmonkey" },
-              { label: "LinkedIn", href: "https://www.linkedin.com/in/wenhui-kang-800859a4/" },
-              { label: "Telegram", href: "https://t.me/fifibam" },
-              { label: "Twitter", href: "https://twitter.com/bamboobee5" },
-            ],
-          },
-        ],
-        copyright: `© ${new Date().getFullYear()} Kit Kong`,
-      },
+      // the footer is src/theme/Footer, a dusk component; its links live there
+      footer: { style: "dark" },
       prism: {
         theme: themes.github,
         darkTheme: themes.oneDark,
