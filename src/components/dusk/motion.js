@@ -62,3 +62,9 @@ export function useFrames(ref, fn, enabled = true) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ref, enabled]);
 }
+
+// One rem in pixels, read from the root so canvas sizes follow the same scale as the CSS.
+export function rem(n) {
+  if (typeof window === "undefined") return n * 17;
+  return n * parseFloat(getComputedStyle(document.documentElement).fontSize);
+}

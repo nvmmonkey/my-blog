@@ -51,12 +51,36 @@ html[data-theme] {
   --font-body: "Wix Madefor Text", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
-  --radius-card: 18px;
-  --radius-inner: 10px;
+  /* everything below is in rem, and the root size follows the viewport, so one change
+     to --ifm-font-size-base scales type, spacing and layout together */
+  --radius-card: 1.125rem;
+  --radius-inner: 0.625rem;
   --radius-pill: 999px;
+  --hair: 1px;
+
+  --text-3xs: 0.6875rem;
+  --text-2xs: 0.75rem;
+  --text-xs: 0.8125rem;
+  --text-sm: 0.875rem;
+  --text-md: 0.9375rem;
+  --text-body: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.375rem;
+  --text-lead: clamp(1.0625rem, 0.4vw + 0.95rem, 1.3125rem);
+  --text-heading: clamp(1.5rem, 0.9vw + 1.2rem, 2.125rem);
+  --text-title: clamp(1.75rem, 1.4vw + 1.2rem, 2.625rem);
+  --text-section: clamp(2rem, 1.5vw + 1.25rem, 2.875rem);
+  --text-display: clamp(2.5rem, 3.6vw + 1.1rem, 4.75rem);
+
+  --control: 3rem;
+  --control-sm: 2.5rem;
+  --container: 76rem;
+  --container-wide: 96rem;
   --tracking-display: -0.022em;
   --display-weight: 500;
 
+  --space-3xs: 0.125rem;
   --space-2xs: 0.25rem;
   --space-xs: 0.5rem;
   --space-sm: 0.75rem;
@@ -65,6 +89,7 @@ html[data-theme] {
   --space-xl: 2.5rem;
   --space-2xl: 4rem;
   --space-3xl: 7rem;
+  --space-4xl: 10rem;
   --gutter: clamp(1rem, 4vw, 3rem);
   --measure: 68ch;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
@@ -87,7 +112,7 @@ html[data-theme] {
   --ifm-heading-font-family: var(--font-display);
   --ifm-font-family-monospace: var(--font-mono);
   --ifm-heading-font-weight: var(--display-weight);
-  --ifm-font-size-base: 17px;
+  --ifm-font-size-base: clamp(1.0625rem, 0.35vw + 0.75rem, 1.375rem);
   --ifm-line-height-base: 1.55;
   --ifm-link-color: var(--color-accent);
   --ifm-link-hover-color: var(--color-accent-hi);
@@ -348,7 +373,7 @@ html[data-theme] {
 @keyframes menu-in {
   from {
     opacity: 0;
-    transform: translateY(18px);
+    transform: translateY(1.125rem);
   }
 }
 
@@ -361,7 +386,7 @@ html[data-theme] {
 .footer__title {
   font-family: var(--font-body);
   font-weight: 500;
-  font-size: 0.9375rem;
+  font-size: var(--text-md);
 }
 
 /* docs read on slate */
@@ -428,9 +453,9 @@ html[data-theme="light"] .footer--dark {
 }
 
 .cursor-glow {
-  width: 560px;
-  height: 560px;
-  margin: -280px 0 0 -280px;
+  width: 33rem;
+  height: 33rem;
+  margin: -16.5rem 0 0 -16.5rem;
   border-radius: 50%;
   background: radial-gradient(circle, color-mix(in oklab, var(--color-accent-2) 22%, transparent) 0%, color-mix(in oklab, var(--color-accent) 12%, transparent) 38%, transparent 70%);
   mix-blend-mode: screen;
@@ -444,25 +469,25 @@ html[data-theme="light"] .cursor-glow {
 
 .cursor-ring {
   z-index: 1000;
-  width: 28px;
-  height: 28px;
-  margin: -14px 0 0 -14px;
+  width: 1.75rem;
+  height: 1.75rem;
+  margin: -0.875rem 0 0 -0.875rem;
   border-radius: 50%;
   box-shadow: inset 0 0 0 1.5px color-mix(in oklab, var(--color-accent) 70%, transparent);
   transition: width 200ms var(--ease-out), height 200ms var(--ease-out), margin 200ms var(--ease-out), background-color 200ms var(--ease-out);
 }
 
 .cursor-ring.is-hot {
-  width: 52px;
-  height: 52px;
-  margin: -26px 0 0 -26px;
+  width: 3.25rem;
+  height: 3.25rem;
+  margin: -1.625rem 0 0 -1.625rem;
   background: color-mix(in oklab, var(--color-accent) 12%, transparent);
 }
 
 .cursor-ring.is-down {
-  width: 20px;
-  height: 20px;
-  margin: -10px 0 0 -10px;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin: -0.625rem 0 0 -0.625rem;
 }
 
 @media (pointer: coarse) {
@@ -482,4 +507,10 @@ html[data-theme="light"] .cursor-glow {
   clip: rect(0 0 0 0);
   white-space: nowrap;
   border: 0;
+}
+
+/* ultra-wide: the bar's contents keep to a centred column, like the page under it */
+.navbar__inner {
+  max-width: var(--container-wide);
+  margin-inline: auto;
 }

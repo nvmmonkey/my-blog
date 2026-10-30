@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { rem } from "./motion";
 import { STACK } from "./stackIcons";
 
 // The stack as a row of low-poly glass balls, each carrying its logo. Grab one and throw
@@ -99,8 +100,8 @@ export default function TechOrbs() {
       const resize = () => {
         const r = wrap.current.getBoundingClientRect();
         w = r.width;
-        narrow = w < 700;
-        h = narrow ? Math.min(600, w * 1.4) : Math.max(260, Math.min(360, w * 0.3));
+        narrow = w < rem(41);
+        h = narrow ? Math.min(rem(37.5), w * 1.4) : Math.max(rem(16), Math.min(rem(22.5), w * 0.3));
         renderer.setSize(w, h, false);
         canvasRef.current.style.height = `${h}px`;
         camera.aspect = w / h;

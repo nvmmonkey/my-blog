@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { rem } from "./motion";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 
 // A simulation of the relay's routing, not a feed of real traffic. Bundles leave the relay,
@@ -280,7 +281,7 @@ export default function RelayGlobe() {
       const resize = () => {
         const r = wrap.current.getBoundingClientRect();
         w = r.width;
-        h = Math.max(320, Math.min(560, w * 0.72));
+        h = Math.max(rem(20), Math.min(rem(35), w * 0.72));
         renderer.setSize(w, h, false);
         canvasRef.current.style.height = `${h}px`;
         camera.aspect = w / h;

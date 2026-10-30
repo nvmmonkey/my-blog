@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { rem } from "./motion";
 
 // A replay of one real LLM-Digest flagship run (#4844, 13 October 2026), time compressed.
 // Stage names and durations come from that run; the particles are drawn, not counted.
@@ -310,8 +311,8 @@ export default function DigestScene({ compact = false }) {
       const resize = () => {
         const r = wrap.current.getBoundingClientRect();
         const w = r.width;
-        vertical = w < 640;
-        const h = vertical ? Math.min(640, w * 1.5) : Math.max(300, Math.min(480, w * 0.36));
+        vertical = w < rem(38);
+        const h = vertical ? Math.min(rem(40), w * 1.5) : Math.max(rem(18), Math.min(rem(30), w * 0.36));
         renderer.setSize(w, h, false);
         canvasRef.current.style.height = `${h}px`;
         camera.aspect = w / h;

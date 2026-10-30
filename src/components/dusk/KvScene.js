@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { rem } from "./motion";
 
 // A toy model of GPU KV-cache memory, not the capstone's measurements. Each block is one
 // page of KV cache; requests claim pages as they prefill and decode, and when memory runs
@@ -203,7 +204,7 @@ export default function KvScene() {
       const resize = () => {
         const r = wrap.current.getBoundingClientRect();
         const w = r.width;
-        const h = Math.max(300, Math.min(480, w * 0.55));
+        const h = Math.max(rem(18), Math.min(rem(30), w * 0.55));
         renderer.setSize(w, h, false);
         canvasRef.current.style.height = `${h}px`;
         camera.aspect = w / h;
