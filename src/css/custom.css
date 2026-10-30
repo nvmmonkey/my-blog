@@ -36,6 +36,7 @@
   --needle-relay: oklch(80% 0.07 215);
   --needle-ledger: oklch(80% 0.07 160);
   --needle-kv: oklch(80% 0.09 305);
+  --needle-root: oklch(80% 0.13 60);
 
   --glass: oklch(22% 0.018 268 / 0.58);
   --glass-blur: 22px;
@@ -44,7 +45,7 @@
 
   --font-display: "Wix Madefor Display", ui-sans-serif, system-ui, sans-serif;
   --font-body: "Wix Madefor Text", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
   --radius-card: 18px;
   --radius-inner: 10px;

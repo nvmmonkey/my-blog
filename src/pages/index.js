@@ -4,7 +4,7 @@ import Link from "@docusaurus/Link";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import HeroScene from "../components/dusk/HeroScene";
 import WorkIndex from "../components/dusk/WorkIndex";
-import DigestScene from "../components/dusk/DigestScene";
+import TechOrbs from "../components/dusk/TechOrbs";
 import { useOnPhoto, useRise } from "../components/dusk/motion";
 import "../components/dusk/dusk.css";
 
@@ -129,16 +129,25 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="band band--tight" id="stack">
+          <div className="wrap">
+            <div className="band__head">
+              <h2>Stack</h2>
+              <p>What the projects below are written in. Grab a ball and spin it.</p>
+            </div>
+            <TechOrbs />
+          </div>
+        </section>
+
         <section className="band ai-band" id="ai">
           <div className="wrap">
             <div className="band__head">
               <h2>AI systems</h2>
               <p>
-                Below is a replay of one real LLM-Digest run: sources flowing into nine stages, each handing its conclusion to the next. Move
-                the pointer to tilt it, or stall a stage to watch the fallback take over.
+                LLM pipelines and agents I run, the serving layer under them, and the tools that let other agents use my data. The{" "}
+                <Link to="/work/llm-digest">LLM-Digest case study</Link> replays one real run.
               </p>
             </div>
-            <DigestScene compact />
             <ul className="ai-grid">
               {AI.map((a, i) => (
                 <li key={a.title} className="rise" style={{ "--i": i }}>
@@ -156,7 +165,7 @@ export default function Home() {
           <div className="wrap">
             <div className="band__head">
               <h2>Selected work</h2>
-              <p>Five projects, each with its own write-up: what the problem was, how it is built, its stack and what it measured.</p>
+              <p>Six projects, each with its own write-up: what the problem was, how it is built, its stack and what it measured.</p>
             </div>
             <WorkIndex />
           </div>

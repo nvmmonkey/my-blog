@@ -43,6 +43,20 @@ export const projects = [
     stack: ["Go", "gRPC", "Rust (tokio, axum)", "Solana Go SDK", "Jito", "Yellowstone gRPC", "Python"],
   },
   {
+    slug: "rootdata",
+    name: "RootData",
+    needle: "var(--needle-root)",
+    year: "2022–2026",
+    claim: "On the founding team of a crypto asset database that grew to 428K users and 200+ API partners; I built product and data features, then opened the data to AI agents through MCP.",
+    metrics: [
+      ["428K", "users"],
+      ["200+", "API partners"],
+      ["~14×", "organic growth in a year"],
+    ],
+    stack: ["Product management", "MCP (TypeScript, Python)", "Cloudflare Workers", "XGBoost", "Streamlit", "SEO"],
+    live: { href: "https://www.rootdata.com", text: "rootdata.com" },
+  },
+  {
     slug: "paymentindexer",
     name: "Payment indexer",
     needle: "var(--needle-ledger)",

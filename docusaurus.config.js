@@ -23,7 +23,7 @@ const config = {
 
   stylesheets: [
     {
-      href: "https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400;500;600&family=Wix+Madefor+Text:wght@400;500;600&display=swap",
+      href: "https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400;500;600&family=Wix+Madefor+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap",
       type: "text/css",
     },
   ],
@@ -91,6 +91,7 @@ const config = {
               { label: "LLM-Digest", to: "/work/llm-digest" },
               { label: "KV-cache LLM serving", to: "/work/kv-cache" },
               { label: "Solana MEV and Jito relay", to: "/work/solana-mev" },
+              { label: "RootData", to: "/work/rootdata" },
               { label: "Payment indexer", to: "/work/paymentindexer" },
               { label: "WestTelecom", to: "/work/westtelecom" },
             ],

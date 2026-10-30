@@ -138,7 +138,33 @@ export function KvThumb() {
   );
 }
 
+export function RootThumb() {
+  // one data hub, partners around it, a request travelling out to each
+  const n = 9;
+  return (
+    <div className="instrument instrument--root" aria-hidden="true">
+      <svg viewBox="0 0 320 240">
+        <circle cx="160" cy="120" r="22" className="root__hub" />
+        {Array.from({ length: n }, (_, i) => {
+          const a = (i / n) * Math.PI * 2 - Math.PI / 2;
+          const x = 160 + Math.cos(a) * 92;
+          const y = 120 + Math.sin(a) * 78;
+          const d = `M160 120 L${x.toFixed(1)} ${y.toFixed(1)}`;
+          return (
+            <g key={i}>
+              <path d={d} className="relay__path" />
+              <circle cx={x} cy={y} r={i % 3 === 0 ? 6 : 4} className="relay__node" />
+              <circle r="2.5" className="relay__packet" style={{ offsetPath: `path("${d}")`, animationDelay: `${i * 0.41}s` }} />
+            </g>
+          );
+        })}
+      </svg>
+    </div>
+  );
+}
+
 export function Thumb({ slug }) {
+  if (slug === "rootdata") return <RootThumb />;
   if (slug === "llm-digest") return <RhythmStrip compact />;
   if (slug === "kv-cache") return <KvThumb />;
   if (slug === "solana-mev") return <RelayThumb />;
