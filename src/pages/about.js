@@ -18,7 +18,7 @@ const STRENGTHS = [
   },
   {
     head: "Product and data",
-    body: "Four years on the founding team of a crypto data platform that reached 428K users, and four years reading 200+ seed deals a year. I know what the data is for before I write the pipeline.",
+    body: "Co-founder of a crypto data platform that reached 428K users, with a database I designed and collected from zero, and four years reading 200+ seed deals a year. I know what the data is for before I write the pipeline.",
     to: "/work/rootdata",
   },
 ];
@@ -46,7 +46,7 @@ const ROLES = [
   { when: "2025 – now", what: "Independent quant and MEV developer", org: "Rust, Go and Python trading systems" },
   { when: "2025 – 2026", what: "MSc, Applied Computer Science", org: "Fairleigh Dickinson University, Vancouver" },
   { when: "2024 – 2026", what: "Investment advisor", org: "J17 Crypto, family office" },
-  { when: "2022 – 2026", what: "Product manager and advisor, founding team", org: "RootData, crypto data platform" },
+  { when: "2022 – 2026", what: "Co-founder, product manager and advisor", org: "RootData, crypto data platform" },
   { when: "2022 – 2026", what: "Investment partner", org: "CatcherVC" },
   { when: "2022 – 2026", what: "Overseas operations and business development", org: "ChainCatcher" },
   { when: "2021", what: "BBA, Finance", org: "Beedie School of Business, Simon Fraser University" },
@@ -73,7 +73,7 @@ export default function About() {
               <p>
                 I studied finance at Simon Fraser University and spent the years after it in crypto: researching deals as an investment
                 partner at CatcherVC, advising a family office, running overseas business development for ChainCatcher, and building
-                RootData from its founding team into a platform with 428K users.
+                co-founding RootData, whose database I designed and collected from zero, into a platform with 428K users.
               </p>
               <p>
                 In 2025 I went back to school for an MSc in Applied Computer Science and spent the same year building Solana MEV

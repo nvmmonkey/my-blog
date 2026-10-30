@@ -85,7 +85,7 @@ export default function RootData() {
   return (
     <CaseStudy
       slug="rootdata"
-      role="Founding team: product manager, later advisor"
+      role="Co-founder: database design, product, later advisor"
       stage={
         <figure className="glass stage rise">
           <DataLayer />
@@ -94,8 +94,8 @@ export default function RootData() {
     >
       <Section title="What it is">
         <p>
-          RootData is a crypto asset database: projects, funding rounds, investors, people and the wallets behind them. I joined the
-          founding team in September 2022 and stayed until September 2026, first building product, later advising.
+          RootData is a crypto asset database: projects, funding rounds, investors, people and the wallets behind them. I
+          co-founded it in September 2022 and stayed until September 2026. The database was mine from zero to one: I decided what to collect, designed how projects, rounds, investors, people and wallets connect, and gathered the first data myself. Then I built the product on top and, later, advised.
         </p>
         <p>
           It grew to 428K users, about 14 times over in one year without paid acquisition, with 700K to 1M page views a day, more than 22K
@@ -112,6 +112,12 @@ export default function RootData() {
               unit: "to 2,000 DAU",
               title: "A launch that held",
               body: "At launch I ran the product and the channels around it: 1,600 registered users, 2,000 daily actives and retention above 90% within two months.",
+            },
+            {
+              fig: "0 → 1",
+              unit: "the database",
+              title: "Designing the data before the product",
+              body: "I chose what to collect and how it connects: projects to funding rounds, rounds to investors, people to the projects they built and the wallets they use. I gathered the first records myself, then turned the collection into a repeatable pipeline.",
             },
             {
               fig: "6",

@@ -24,7 +24,7 @@ const RUNNING = [
   { initial: "L", name: "LLM-Digest", line: "Nine-stage LLM report from 127 sources", fig: "4,100+", unit: "reports", status: "Running", tone: "on", breathe: true },
   { initial: "K", name: "KV-cache LLM serving", line: "4-bit KV under a learned vLLM scheduler", fig: "6.8×", unit: "faster first token", status: "Done", tone: "on" },
   { initial: "S", name: "Solana Jito relay", line: "Eight regions, one shared limiter", fig: "4,000+", unit: "egress IPs", status: "Built", tone: "on" },
-  { initial: "R", name: "RootData", line: "Founding team, crypto data platform", fig: "428K", unit: "users", status: "2022–2026", tone: "on" },
+  { initial: "R", name: "RootData", line: "Co-founder; designed the database from zero", fig: "428K", unit: "users", status: "2022–2026", tone: "on" },
   { initial: "P", name: "Payment indexer", line: "Card programs traced on chain", fig: "22 of 24", unit: "programs", status: "Reconciling", tone: "open", breathe: true },
   { initial: "W", name: "WestTelecom", line: "Bilingual catalogue, live demo", fig: "5", unit: "product lines", status: "Live", tone: "on" },
 ];

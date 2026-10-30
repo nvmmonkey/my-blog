@@ -20,10 +20,10 @@ const EXPERIENCE = [
   },
   {
     when: "Sep 2022 – Sep 2026",
-    what: "Product manager and advisor, founding team",
+    what: "Co-founder, product manager and advisor",
     org: "RootData, crypto data platform",
     points: [
-      "Founding-team PM for a platform grown to 428K users (about 14× organic in 12 months), 700K–1M daily page views, 22K+ projects and 200+ API partners including Binance Alpha and OKX Boost.",
+      "Co-founded the platform and designed and collected its database from zero; as PM grew it to 428K users (about 14× organic in 12 months), 700K–1M daily page views, 22K+ projects and 200+ API partners including Binance Alpha and OKX Boost.",
       "Built data charting, SEO, anti-crawling, UI and CRM; open-sourced TypeScript and Python MCP servers exposing about 20 RootData tools to AI agents.",
       "Built a 61-model XGBoost analytics app over 6,000+ projects (launch AUC 0.81) from 116 automated experiments.",
     ],

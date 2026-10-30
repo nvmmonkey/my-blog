@@ -2231,3 +2231,37 @@ html[data-theme="dark"] .gallery__go,
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+/* the desk list on a phone: tighter rows, one line of detail */
+@media (max-width: 40rem) {
+  .runlist {
+    padding: var(--space-md);
+  }
+  .runlist li {
+    grid-template-columns: 1.75rem minmax(0, 1fr) auto;
+    gap: var(--space-xs);
+    padding-block: var(--space-xs);
+  }
+  .initial {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+  .runlist__name {
+    font-size: 0.875rem;
+  }
+  .runlist__line {
+    font-size: 0.75rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .runlist__fig {
+    font-size: 0.875rem;
+  }
+  .runlist__fig small {
+    font-size: 0.75rem;
+  }
+  .runlist__open {
+    font-size: 0.875rem;
+  }
+}

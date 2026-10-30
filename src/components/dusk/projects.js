@@ -47,7 +47,7 @@ export const projects = [
     name: "RootData",
     needle: "var(--needle-root)",
     year: "2022–2026",
-    claim: "On the founding team of a crypto asset database that grew to 428K users and 200+ API partners; I built product and data features, then opened the data to AI agents through MCP.",
+    claim: "I co-founded a crypto asset database and designed and collected its data from zero; it grew to 428K users and 200+ API partners, and I later opened the data to AI agents through MCP.",
     metrics: [
       ["428K", "users"],
       ["200+", "API partners"],
