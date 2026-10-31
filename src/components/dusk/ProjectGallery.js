@@ -63,13 +63,15 @@ function Card({ p, i, total, offset, onFocus }) {
       style={{ "--card-needle": p.needle, "--o": offset, "--a": side }}
       aria-roledescription="slide"
       aria-label={`${i + 1} of ${total}: ${p.name}`}
-      aria-hidden={focused ? undefined : true}
-      inert={!focused}
       data-hidden={side > 2 ? "" : undefined}
-      onClick={focused ? undefined : onFocus}
     >
+      {/* side cards: the content is inert, and one button over it brings the card to the front */}
+      {!focused && (
+        <button type="button" className="deck__pick" onClick={onFocus} aria-label={`Show ${p.name}`} tabIndex={side > 1 ? -1 : 0} />
+      )}
+      <div className="deck__inner" inert={!focused} aria-hidden={focused ? undefined : true}>
       <div className="deck__visual" ref={visual}>
-        <img src={`${base}-1440.webp`} srcSet={`${base}-960.webp 960w, ${base}-1440.webp 1440w`} sizes="(max-width: 62rem) 86vw, 40rem" alt="" loading="lazy" width="1440" height="900" />
+        <img src={`${base}-1440.webp`} srcSet={`${base}-960.webp 960w, ${base}-1440.webp 1440w`} sizes="(max-width: 62rem) 86vw, 40rem" alt="" loading="lazy" draggable={false} width="1440" height="900" />
         <a className="gallery__go" ref={go} href={target} target={href ? "_blank" : undefined} rel={href ? "noopener" : undefined} aria-label={href ? `Open ${p.live.text}` : `Read the ${p.name} case study`}>
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
@@ -107,6 +109,7 @@ function Card({ p, i, total, offset, onFocus }) {
           )}
         </div>
       </div>
+      </div>
     </article>
   );
 }
@@ -141,7 +144,9 @@ export default function ProjectGallery() {
     }
   };
   const onDown = (e) => {
-    if (e.pointerType === "mouse") return;
+    if (e.button !== undefined && e.button !== 0) return;
+    // with a mouse, a drag over the focused card's text selects it rather than moving the deck
+    if (e.pointerType === "mouse" && e.target.closest(".is-focus .deck__body")) return;
     drag.current = { x: e.clientX, y: e.clientY };
   };
   const onUp = (e) => {
@@ -149,8 +154,41 @@ export default function ProjectGallery() {
     drag.current = null;
     if (!d) return;
     const dx = e.clientX - d.x;
-    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(e.clientY - d.y)) go(current + (dx < 0 ? 1 : -1));
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(e.clientY - d.y) * 1.5) {
+      dragged.current = true;
+      go(current + (dx < 0 ? 1 : -1));
+    }
   };
+  // a drag that moved the deck shouldn't also click the link it ended on
+  const dragged = useRef(false);
+  const onClickCapture = (e) => {
+    if (dragged.current) {
+      e.preventDefault();
+      e.stopPropagation();
+      dragged.current = false;
+    }
+  };
+  // trackpad swipes and shift+wheel step the deck; plain vertical scrolling stays with the page
+  const deckRef = useRef(null);
+  const wheelLock = useRef(0);
+  const currentRef = useRef(current);
+  currentRef.current = current;
+  useEffect(() => {
+    const el = deckRef.current;
+    if (!el) return undefined;
+    const onWheel = (e) => {
+      const dx = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.shiftKey ? e.deltaY : 0;
+      if (!dx) return;
+      e.preventDefault();
+      const now = performance.now();
+      if (now < wheelLock.current || Math.abs(dx) < 12) return;
+      wheelLock.current = now + 650;
+      go(currentRef.current + (dx > 0 ? 1 : -1));
+    };
+    el.addEventListener("wheel", onWheel, { passive: false });
+    return () => el.removeEventListener("wheel", onWheel);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <section className="gallery" aria-roledescription="carousel" aria-label="Projects">
@@ -168,7 +206,18 @@ export default function ProjectGallery() {
         </div>
         <p>{total} projects, each with its own write-up. The round link on the picture goes straight to the live site.</p>
       </div>
-      <div className="deck" tabIndex={0} onKeyDown={onKey} onPointerDown={onDown} onPointerUp={onUp} onPointerCancel={() => (drag.current = null)} aria-label="Projects, use the left and right arrow keys to move between them">
+      <div
+        className="deck"
+        ref={deckRef}
+        tabIndex={0}
+        onKeyDown={onKey}
+        onPointerDown={onDown}
+        onPointerUp={onUp}
+        onPointerCancel={() => (drag.current = null)}
+        onClickCapture={onClickCapture}
+        onDragStart={(e) => e.preventDefault()}
+        aria-label="Projects: use the arrow keys, swipe sideways, or click a side card"
+      >
         <div className="deck__stage">
           {projects.map((p, i) => (
             <Card key={p.slug} p={p} i={i} total={total} offset={offsetOf(i)} onFocus={() => go(i)} />

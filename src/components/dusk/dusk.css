@@ -2027,10 +2027,14 @@
 
 /* --o is the card's signed distance from focus, --a its absolute value */
 .deck__card {
-  --step: min(31rem, 64vw);
+  /* sized from the viewport height too, so a whole card fits on screen */
+  --card-w: min(32rem, 84vw, calc((100svh - 9rem) * 0.82));
+  --step: calc(var(--card-w) * 0.86);
   --needle: var(--card-needle);
   grid-area: 1 / 1;
-  width: min(36rem, 84vw);
+  width: var(--card-w);
+  position: relative;
+  user-select: none;
   display: grid;
   border-radius: var(--radius-card);
   overflow: hidden;
@@ -2057,6 +2061,29 @@
 .deck__card[data-hidden] {
   opacity: 0;
   pointer-events: none;
+}
+
+.deck__pick {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  cursor: pointer;
+}
+
+.deck__pick:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+.deck__inner {
+  display: grid;
+}
+
+.deck__card.is-focus .deck__inner {
+  user-select: text;
 }
 
 .deck__visual {
@@ -2171,7 +2198,35 @@
 
 @media (max-width: 40rem) {
   .deck__card {
+    --card-w: 84vw;
     --step: 80vw;
+  }
+}
+
+/* desktop: a landscape card, picture beside the text, so a whole card fits a short
+   wide screen; the neighbours peek out from behind it */
+@media (min-width: 62rem) {
+  .deck__card {
+    --card-w: min(60rem, 66vw);
+    --step: calc(var(--card-w) * 0.6);
+    transform: translateX(calc(var(--o) * var(--step))) translateY(calc(var(--a) * 1.75rem)) rotate(calc(var(--o) * 2.5deg)) scale(calc(1 - var(--a) * 0.12));
+    transform-origin: 50% 50%;
+  }
+  .deck__inner {
+    grid-template-columns: 1.05fr 1fr;
+    max-height: calc(100svh - 8rem);
+  }
+  .deck__visual {
+    aspect-ratio: auto;
+    min-height: 100%;
+  }
+  .deck__visual img {
+    position: absolute;
+    inset: 0;
+  }
+  .deck__body {
+    align-content: center;
+    overflow: hidden;
   }
 }
 
